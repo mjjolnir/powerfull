@@ -20,4 +20,7 @@
     <access origin="*" />
     
     <gap:splash src="splash.png" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    
 </widget>
