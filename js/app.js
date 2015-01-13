@@ -17,7 +17,7 @@ var app = {
     	setTimeout(function() {
             navigator.splashscreen.hide();
     	}, 4000);
-    	
+    	alert("receivedEvent");
         navigator.notification.confirm(
         	    'You are the winner!', // message
         	     this.onConfirm,            // callback to invoke with index of button pressed
