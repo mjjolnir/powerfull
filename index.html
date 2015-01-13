@@ -1,21 +1,345 @@
 <html>
 <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        
-        <link rel="stylesheet" type="text/css" href="css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="css/app.css" />
-        
-        <title>Powerfull Club</title>
-        
-        <script src="phonegap.js"></script>
-    </head>
-<body>
-<div>DENEME 333</div>
+      <meta charset="utf-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+      
+      <link rel="stylesheet" type="text/css" href="css/reset.css" />
+      <link rel="stylesheet" type="text/css" href="css/app.css" />
+      <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+      
+      <!-- theme styles -->
+      <link rel="stylesheet" type="text/css" href="theme/orange/theme.css" />
+      
+      <!--  jquery plugin style -->
+      <link rel="stylesheet" type="text/css" href="css/jquery/swipebox.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery/idangerous.swiper.css" />
+      
+      <!-- jquery plugins & modules -->
+      <script type="text/javascript" src="js/jquery/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular/angular-sanitize.min.js"></script>
 
-<script src="js/app.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.swipebox.js"></script>
+	<script type="text/javascript" src="js/jquery/idangerous.swiper-2.1.min.js"></script>
+      
+    <title>Powerfull Club</title>
+    
+    <!-- PHONEGAP AUTO INCLUDE -->
+    <script src="phonegap.js"></script>
+</head>
+
+<body ng-app="powerfullApp">
+   <div id="header">
+   	   <h2 class="header-title"></h2>
+      <div class="gohome radius20"><a href="#"><img src="images/icons/home.png" alt="" title="" /></a></div>
+      <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(10);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
+      
+  </div>
+  <div class="swiper-container swiper-parent">
+    <div class="swiper-wrapper">
+    
+<!--Menu page-->
+      <div class="swiper-slide sliderbg_menu">
+          <div class="swiper-container swiper-nested">
+                   <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                                  <div class="slide-inner">
+                                        <div class="logo"><a href="#"><img src="images/mobile-logo.png" alt="" title="" border="0" /></a></div>
+                                        <div class="menu">
+                                        <ul>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(1);"><img src="images/menu_icons/clubs.png" alt="" title="" /><span>Kulüpler</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(2);"><img src="images/menu_icons/calendar.png" alt="" title="" /><span>Ders Programı</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(3);"><img src="images/menu_icons/user.png" alt="" title="" /><span>Üyere Özel</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(4);"><img src="images/menu_icons/albums.png" alt="" title="" /><span>Etkinlikler</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(5);"><img src="images/menu_icons/identification.png" alt="" title="" /><span>Winner Card</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(6);"><img src="images/menu_icons/powerfullacademy.png" alt="" title="" /><span>Akademi</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(7);"><img src="images/menu_icons/trainer.png" alt="" title="" /><span>Training</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(8);"><img src="images/menu_icons/wellness.png" alt="" title="" /><span>Wellness</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(9);"><img src="images/menu_icons/news.png" alt="" title="" /><span>Duyurular</span></a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        </div>
+                                 </div>
+                         </div>
+                   </div>
+          </div> 
+      </div>
+      
+<!--Page 1 content-->
+      <div class="swiper-slide sliderbg" data-title="Kulüpler">
+      <div class="pages_container">
+        <div class="swiper-container swiper-nested1 vertical-container">
+               <div class="swiper-wrapper">
+                    <div class="swiper-slide">   
+                            <div class="toogle_wrap radius8">
+                                <div class="trigger"><a href="#">Powerfull Caddebostan<img src="images/club1.jpg"></a></div>
+                                <div class="toggle_container">
+                                    <ul class="listing_detailed">
+                                        <li>Türkiye'de ilk olan; fonksiyonel egzersizler yapabileceğiniz CrossCamp Stüdyosu.</li>
+                                        <li>Müthiş bir ses sistemi.</li>
+                                        <li>Kapalı otopark imkanı.</li>
+                                        <li>Uzman ve profesyonel eğitmen kadrosu.</li>
+                                        <li>Olimpiyatların sponsoru Technogym ekipmanları ile egzersiz keyfi.</li>
+                                        <li>Fitness sektöründeki yeni trendleri yakalayan ve uygulayan stüdyo dersleri.</li>
+                                        <li>Spor dışındaki zamanlarda vakit geçirebileceğiniz sosyal aktivite alanları (Masa Tenisi ve Play Station)</li>
+                                        <li>Çipli sistemle takip edilen havlular sayesinde, havlunun kaç kez yıkanıp, yıprandığını tespit edip hijyen kontrolünün sağlanması.</li>
+                                        <li>Spor yaparken size özel ekranlar sayesinde TV seyredebilirsiniz.</li>
+                                        <li>Dolap kilidini taşımanız gerekmez, dolabınızı elektronik olarak dilediğiniz şifreyle kilitleyebilirsiniz.</li>
+                                        <li>Havlu,peştamal ve içme suyu ücretsiz olarak sağlanır.</li>
+                                        <li>Spora fırsat bulamadığınız zamanlarda üyeliğinizi dondurabilirsiniz.</li>
+                                        <li>Habersiz kalmazsınız! Tesisle ilgili haberler e-posta ve sms ile size bildirilir.</li>
+                                        <li>Şampuan, vücut losyonu, nemlendirici krem, jöle, saç düzleştiricisi, fön makinası ve bakım ürünlerini ücretsiz olarak kullanabilirsiniz.</li>
+                                    </ul>                                            
+                                </div>
+                            </div>
+                    </div>
+                    <div class="swiper-slide"> 
+                            <div class="toogle_wrap radius8">
+                                <div class="trigger"><a href="#">Powerfull Fenerbahçe<img src="images/club2.jpg"></a></div>
+                                <div class="toggle_container">
+                                    <ul class="listing_detailed">
+                                        <li>Deniz manzarası ile birlikte spor yapabileceğiniz ilk ve tek spor merkezi</li>
+                                        <li>Müthiş bir ses sistemi.</li>
+                                        <li>Olimpiyatların sponsoru "Technogym Selection" serisi spor ekipmanları ve her aletin üzerinde bulunan Power Control (bilgisayarlı antrenör) cihazlarıyla spor yapabilme imkanı.</li>
+                                        <li>Balanced Body patentli pilates chair aleti ile birlikte pilatesin grup çalışması olarak verildiği tek spor klübü.</li>
+                                        <li>Her üyeye özel olarak hazırlanmış egzersiz programı ile birlikte ek ücret ödemeden personal training hizmeti.</li>
+                                        <li>Son derece hijyenik bir ortamda konusunda uzman eğitmenlerle egzersiz yapma imkanı.</li>
+                                        <li>Fenerbahçe'nin bol oksijenli ortamında içerdeki havanın sürekli olarak taze kalması ile birlikte daha sağlıklı spor yapabilme imkanı.</li>
+                                    </ul>     
+                                </div>
+                            </div>
+                    </div>
+                   <div class="swiper-slide"> 
+                        <div class="toogle_wrap radius8">
+                            <div class="trigger"><a href="#">Powerfull Angora<img src="images/club3.jpg"></a></div>
+                            <div class="toggle_container">
+                                <ul class="listing_detailed">
+                                    <li>Deniz manzarası ile birlikte spor yapabileceğiniz ilk ve tek spor merkezi</li>
+                                    <li>Müthiş bir ses sistemi.</li>
+                                    <li>Olimpiyatların sponsoru "Technogym Selection" serisi spor ekipmanları ve her aletin üzerinde bulunan Power Control (bilgisayarlı antrenör) cihazlarıyla spor yapabilme imkanı.</li>
+                                    <li>Balanced Body patentli pilates chair aleti ile birlikte pilatesin grup çalışması olarak verildiği tek spor klübü.</li>
+                                    <li>Her üyeye özel olarak hazırlanmış egzersiz programı ile birlikte ek ücret ödemeden personal training hizmeti.</li>
+                                    <li>Son derece hijyenik bir ortamda konusunda uzman eğitmenlerle egzersiz yapma imkanı.</li>
+                                    <li>Fenerbahçe'nin bol oksijenli ortamında içerdeki havanın sürekli olarak taze kalması ile birlikte daha sağlıklı spor yapabilme imkanı.</li>
+                                </ul>     
+                            </div>
+                        </div>    
+                 </div>
+                 <div class="swiper-slide"> 
+                                        <div class="toogle_wrap radius8">
+                                            <div class="trigger"><a href="#">Eğitmenlerimiz<img src="images/club-trainers.jpg"></a></div>
+                                            <div class="toggle_container">
+                                                <div class="trainers">
+                                                    <ul>
+                                                        <li><img src="images/trainers/uifaces1.jpg" alt="" title="" /><div>Ali Koşucu</div></li>
+                                                        <li><img src="images/trainers/uifaces2.jpg" alt="" title="" /><div>Sibel Tezcan</div></li>
+                                                        <li><img src="images/trainers/uifaces3.jpg" alt="" title="" /><div>Eğitmen 3</div></li>
+                                                        <li><img src="images/trainers/uifaces4.jpg" alt="" title="" /><div>Eğitmen 4</div></li>
+                                                        <li><img src="images/trainers/uifaces5.jpg" alt="" title="" /><div>Eğitmen 5</div></li>
+                                                        <li><img src="images/trainers/uifaces6.jpg" alt="" title="" /><div>Eğitmen 6</div></li>
+                                                        <li><img src="images/trainers/uifaces7.jpg" alt="" title="" /><div>Eğitmen 7</div></li>
+                                                        <li><img src="images/trainers/uifaces8.jpg" alt="" title="" /><div>Eğitmen 8</div></li>
+                                                        <li><img src="images/trainers/uifaces9.jpg" alt="" title="" /><div>Eğitmen 9</div></li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                </div>   
+                                            </div>
+                                        </div>  
+                                        
+                                        <div class="clearfix"></div>
+      									<div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                                        <!--End of page container-->
+                    </div>
+              </div>
+            </div>
+         </div>
+     </div>
+      
+<!--Page 2 content-->
+      <div class="swiper-slide sliderbg" data-title="Ders Programı">
+        <div class="pages_container">
+            <div class="swiper-container swiper-nested2 vertical-container">
+                <div class="swiper-wrapper" ng-controller="calendarController">
+                        <div class="swiper-slide">  
+                            <div class="toogle_wrap_blog radius8">
+                                <div class="trigger_blog"><a href="#">Lokasyonlar</a></div>
+                                    <div class="toggle_container_blog">
+                                        <ul class="listing_detailed">
+                                            <li ng-repeat="location in data" ng-click="toggleDays($index)"><a href="#">{{location.title}}</a></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide"> 
+                            <ul class="cdays" ng-show="showDayList">
+                                <li class="day radius8" ng-repeat="days in daysData"><h4><a href="#"  ng-click="getDayData($index)">{{days.title}}</a></h4></li>
+                            </ul>
+                        </div>
+                        <div class="swiper-slide"> 
+                            <ul class="cdays" ng-show="showDayDetail">
+                                <li class="day" ng-repeat="detail in details"><h5>{{detail}}</h5></li>
+                            </ul>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="clearfix"></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                        </div>
+                  </div>
+            </div>
+        </div>
+     </div>
+     
+<!--Page 3 content-->
+      <div class="swiper-slide sliderbg" data-title="Üyelere Özel">
+        <div class="pages_container">
+            ÜYELİK ALANI
+        </div>
+     </div>
+     
+      <div class="swiper-slide sliderbg">
+        <div class="swiper-container swiper-nested" data-title="Sosyal Etkinlikler">
+          <div class="pages_container">
+                <ul class="photo_gallery_13">
+                    <li><a rel="gallery-3" href="images/photos/photo1.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo1.jpg" alt="image"/></a></li>
+                    <li><a rel="gallery-3" href="images/photos/photo2.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo2.jpg" alt="image"/></a></li>
+                    <li><a rel="gallery-3" href="images/photos/photo3.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo3.jpg" alt="image"/></a></li>
+                    <li><a rel="gallery-3" href="images/photos/photo4.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo4.jpg" alt="image"/></a></li>
+                    <li><a rel="gallery-3" href="images/photos/photo5.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo5.jpg" alt="image"/></a></li>
+                    <li><a rel="gallery-3" href="images/photos/photo6.jpg" title="Photo title" class="swipebox"><img src="images/photos/photo6.jpg" alt="image"/></a></li>
+                </ul>
+          </div>
+        </div>                            
+      </div>
+<!--Page 4 content-->
+      <div class="swiper-slide sliderbg" data-title="Winner Card">
+      <div class="pages_container">
+            <div class="swiper-container swiper-nested5 vertical-container">
+                <div class="swiper-wrapper">
+                        <div class="swiper-slide">  
+                            <ul class="winner-card-wrapper" ng-controller="winnerCardController">
+                               <li ng-repeat="item in data"  index="$index" ng-model="name" ng-click="toggleDetail($event,$index,item)">
+                                   <img src="http://caddebostan.powerfullclub.com/services.php?action=ximage&sourcePath={{item.image}}&canvasColor=%23FFFFFF&resizeOperator=fillcolor&publishWithUID=1&width=140&height=140" alt="{{item.title}}" />
+                               </li>
+                         
+                              <div id="winner-card-prev-panel">
+                                <h4>{{prevdata.title}}</h4>
+                                <p ng-bind-html="prevdata.desc"></p>  
+                                <span class="close" ng-click="closePanel()"></span>
+                              </div>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="clearfix"></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                        </div>
+                  </div>
+            </div>
+        </div>
+     </div>
+     
+<!--Page 5 content-->
+      <div class="swiper-slide sliderbg" data-title="Powerfull Akademi">
+        <div class="pages_container akademi_container">
+            <div class="swiper-container swiper-nested6 vertical-container">
+                <div class="swiper-wrapper">
+                        <div class="swiper-slide">  
+                            <img src="images/akademi-page.jpg" />
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="clearfix"></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                        </div>
+                  </div>
+            </div>
+            
+        </div>
+     </div>
+<!--Page 6 content-->
+      <div class="swiper-slide sliderbg" data-title="Personal Training">
+      <div class="swiper-container swiper-nested">
+               <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                              <div class="slide-inner">
+                                        <div class="pages_container">
+                                            <h1>PERSONAL TRAINING</h1>
+                                        </div>
+                                        <!--End of page container-->
+                              </div>
+                    </div>
+              </div>
+     </div>
+     </div>
+<!--Page 7 content-->
+      <div class="swiper-slide sliderbg" data-title="Wellness">
+      <div class="swiper-container swiper-nested">
+               <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                              <div class="slide-inner">
+                                        <div class="pages_container">
+                                        <h1>Wellness</h1>
+                                      
+                                      
+                                        <div class="clearfix"></div>
+    					<div class="scrolltop radius20"><a href="#" class="scrolltop7"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                                        </div>
+                                        <!--End of page container-->
+                              </div>
+                    </div>
+              </div>
+     </div>
+     </div>
+<!--Page 9 content-->
+      <div class="swiper-slide sliderbg" data-title="Duyurular">
+        <div class="pages_container akademi_container">
+            <div class="swiper-container swiper-nested9 vertical-container">
+                <div class="swiper-wrapper">
+                        <div class="swiper-slide">  
+                            <ul ng-controller="newsController" class="news">
+                                <li ng-repeat="item in data">
+                                    <div class="img-wrapper">
+                                        <img v-align="left" src="http://caddebostan.powerfullclub.com/services.php?action=ximage&sourcePath={{item.image}}&canvasColor=%23FFFFFF&resizeOperator=fillcolor&publishWithUID=1&width=90&height=90" />
+                                    </div>
+                                    <div class="content-wrapper">
+                                        <h5>{{item.title}}</h5>
+                                        <p ng-bind-html="item.desc" class="desc"></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="clearfix"></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+     </div>
+       
+     <!--End of pages--> 
+
+    </div>
+    <div class="pagination"></div>
+  </div>
+  
+  <div id="footer-menu">
+      <ul>
+          <li><div class="footer-icon clearfix"><img src="images/footer_icons/phone.png"></div><div class="footer-label"><a class="call_button" href="#">Arama Yap</a></div></li>
+          <li><div class="footer-icon clearfix"><img src="images/footer_icons/share.png"></div><div class="footer-label">Powershare</div></li>
+          <li><div class="footer-icon clearfix"><img src="images/footer_icons/map.png"></div><div class="footer-label">Neredeyiz</div></li>
+          <li><div class="footer-icon clearfix"><img src="images/footer_icons/contact.png"></div><div class="footer-label">İletişim</div></li>
+      </ul>
+  </div>
+
+
+
+	<script src="js/app.js"></script>
+	<script src="js/data.js"></script>
 </body>
 </html>
