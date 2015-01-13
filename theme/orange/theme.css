@@ -2,13 +2,13 @@ body{color:#5e5e5e;background-color:#fff;background: url(images/bg/appbg-480x800
 a, span.tag{color:#4a8d09;}
 a.view_details{ background:url(images/bullet_cross.png) no-repeat left; }
 a.button_11, a.button_12{color:#FFFFFF;}
-#header{ background:#738c5b url(images/titlebar-bg.png) top center no-repeat; background-size:cover; color:#FFFFFF;}
+#header{ background:#000 url(images/titlebar-bg.png) top center no-repeat; background-size:cover; color:#FFFFFF;}
 .logo{ text-align:center; margin:auto; padding:25px 0 15px 0;font-size:30px;}
 .logo img{max-width:75%;}
 .logo, .logo a{ color:#FFFFFF;}
 
-#footer-menu {background-color: #738c5b;}
-#footer-menu ul li { background: #556d3e url(images/footer-btn-bg.jpg) repeat-x top left;}
+#footer-menu {background-color: #020225;}
+#footer-menu ul li { background-color: #061c21;}
 
 /* Google web font
 /*------------------------------------------*/
@@ -19,7 +19,7 @@ h2.page_title{color:#5e5e5e;}
 /*------------------------------------------*/
 .menu{ width:100%; padding:0px;margin:0px 0 50px 0;}
 .menu ul{ list-style:none; padding:0px; margin:0px; width:100%;}
-.menu ul li{ list-style:none; margin:1% 0 2% 4%; padding:5.5% 0; width:28%;height:auto; float:left; display:block; text-align:center;
+.menu ul li{ list-style:none; margin:1% 0 2% 4%; padding:4.5% 0; width:28%;height:auto; float:left; display:block; text-align:center;
 background-image: url(images/transparent_circle.png);
 background-repeat: no-repeat;
 background-position: center center; 
@@ -44,9 +44,9 @@ background-size: cover;
 .sliderbg_menu{} 
 .sliderbg{ background-color:#ececec;}
 
-.scrolltop{ background-color:#556d3e;}
-.gohome{ background-color:#556d3e;}
-.gomenu{ background-color:#556d3e;}
+.scrolltop{ background-color:#d66911;}
+.gohome{ background-color:#061c21; border:1px solid #0b313a;}
+.gomenu{ background-color:#061c21; border:1px solid #0b313a;}
 
 .pages_container{ margin:60px 2.5%; background-color:#ffffff; padding:20px 2.5%; border:1px #dddddd solid; width:90%; height:400px;}
 
@@ -56,7 +56,7 @@ background-size: cover;
 .active {background-position:100% 0px; }
 .trigger a{color: #636363;}
 .trigger a:hover, .trigger a:hover:focus{color:#4a8d09;}
-.toogle_wrap_blog{background-color:#85af5d;}
+.toogle_wrap_blog{background-color:#0e3139;}
 .trigger_blog{background:url(images/toggle_blog.png) no-repeat right;background-position:100% -22px;}
 .activeb {background-position:100% 0px; }
 .trigger_blog a{color: #fff;}
@@ -72,7 +72,7 @@ ul.photo_gallery_13_round li{border:1px #e5e5e5 solid;}
 
 
 /*--------- calendar style ----------------*/
-ul.cdays li.day {background-color: #85af5d; color:#fff;}
+ul.cdays li.day {background-color: #164a56; color:#fff;}
 ul.cdays li.day a {color:#fff; width: 100%; display: block;}
 
 

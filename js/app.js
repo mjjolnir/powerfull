@@ -18,7 +18,7 @@ var app = {
     receivedEvent: function(id) {
     	setTimeout(function() {
             navigator.splashscreen.hide();
-    	}, 4000);
+    	}, 8000);
 
         /* navigator.notification.confirm(
         	    'You are the winner!', // message
@@ -157,3 +157,25 @@ $(window).resize(function(){
 			swipernested9.swipeTo(0);
 	});
 
+	
+	$(function() {
+	    
+	    $(".swipebox").swipebox();
+	    
+	    $('.gohome').click(function(){
+	     swiperParent.swipeTo(0);
+	    });
+	    
+	    $(".trigger").click(function(){
+	        $(this).toggleClass("active").next().slideToggle("slow");
+	        return false;
+	    });
+	    $(".trigger_blog").click(function(){
+	        $(this).toggleClass("activeb").next().slideToggle("slow");
+	        return false;
+	    });
+	    $(".post_more").click(function(){
+	        $(this).toggleClass("activep").next().slideToggle("slow");
+	        return false;
+	    });
+	});

@@ -8,7 +8,7 @@ a.view_details{padding:0 0 0 15px;}
 .vertical-container .swiper-slide {height:auto;}
 
 #header{ position:absolute; top:-100px; left:0px; z-index:9999; width:100%; height:40px;padding:6px 0px;}
-#header .header-title { width:100%; padding:12px 0px; margin:0px; text-align:center; position:absolute; top:0px; left:0px; z-index:-1; }
+#header .header-title { width:100%; padding:12px 0px; margin:0px; text-align:center;font-size:24px; position:absolute; top:0px; left:0px; z-index:-1; }
 
 /* Headings
 /*------------------------------------------*/
@@ -48,7 +48,6 @@ h2.page_title{ font-size:30px;padding:0 0 20px 0;}
 
 
 #footer-menu ul li {
-    background-color: #556d3e;
     display: block;
     float: left;
     height: 100%;
