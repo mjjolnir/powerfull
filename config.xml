@@ -17,6 +17,6 @@
         Jokermedya Dev Team 
     </author>
 
-    <content src="file:///www/index.html" />
+    <content src="index.html" />
     <access origin="*" />
 </widget>
