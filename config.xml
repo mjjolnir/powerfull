@@ -18,4 +18,6 @@
     </author>
 
     <access origin="*" />
+    
+    <gap:splash src="splash.png" />
 </widget>
