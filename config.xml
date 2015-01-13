@@ -23,4 +23,7 @@
     <preference name="show-splash-screen-spinner" value="false" />
     <preference name="auto-hide-splash-screen" value="false" />
     
+    
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
 </widget>
