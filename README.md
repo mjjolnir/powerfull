@@ -1,4 +1,4 @@
 powerfull
 =========
 
-Powerfull Club Mobile App.
+Powerfull Club Mobile Application.

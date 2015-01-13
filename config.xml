@@ -10,11 +10,13 @@
     <name>Powerfull Club</name>
 
     <description>
-        Powerfull Club Mobile App.
+        Powerfull Club App
     </description>
 
-    <author href="http://jokermedya.com" email="dev@jokermedya.com">
-        Jokermedya Dev Team
+    <author href="http://jokermedya.com" email="support@jokermedya.com">
+        Jokermedya Dev Team 
     </author>
 
+    <content src="file:///www/index.html" />
+    <access origin="*" />
 </widget>
