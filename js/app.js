@@ -13,6 +13,7 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        app.onResize();
     },
     
     receivedEvent: function(id) {
@@ -34,6 +35,11 @@ var app = {
     
     onConfirm: function(buttonIndex) {
         alert('You selected button ' + buttonIndex);
+    },
+    
+    onResize: function() {
+    	$('.pages_container').height($(window).innerHeight() - $('#header').height() - $('#footer').height() - 130);
+  	  $('.pages_container.akademi_container').height($(window).innerHeight() - $('#header').height() - $('#footer').height() - 90);
     }
 };
 
@@ -41,12 +47,11 @@ app.initialize();
 
 
 
-$(window).resize(function(){
-
-	  $('.pages_container').height($(window).innerHeight() - $('#header').height() - $('#footer').height() - 130);
-	  $('.pages_container.akademi_container').height($(window).innerHeight() - $('#header').height() - $('#footer').height() - 90);
+	$(window).resize(function(){
+		app.onResize();
 	});
 
+	
 	$(function(){
 	    $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
 	        e.stopPropagation();

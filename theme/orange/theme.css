@@ -7,8 +7,6 @@ a.button_11, a.button_12{color:#FFFFFF;}
 .logo img{max-width:75%;}
 .logo, .logo a{ color:#FFFFFF;}
 
-#footer-menu {background-color: #020225;}
-#footer-menu ul li { background-color: #061c21;}
 
 /* Google web font
 /*------------------------------------------*/
@@ -31,6 +29,12 @@ background-size: cover;
 .menu ul li a{ color:#FFFFFF; text-decoration:none;  text-align: center;} 
 .menu ul li a span{ display:block; text-align:center; font-size:11px; line-height:15px;}
 .menu ul li img{ display:inline-block;max-width:50%;}
+
+/* Footer Menu style
+/*------------------------------------------*/
+#footer-menu {background-color: #081c21;}
+#footer-menu .btn-footer {background-color: #0a2329;}
+#footer-menu .btn-footer.active {background-color: #0c2931;}
 
 /* Trainers style
 /*------------------------------------------*/
