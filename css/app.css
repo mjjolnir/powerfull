@@ -228,6 +228,39 @@ ul.cdays {padding:0px; margin:0px; width:100%; display:block;}
 ul.cdays li.day {width:100%; height:40px; margin:0 0 10px 0; position:relative; text-align: center;}
 
 /* ----------------- news style -----------------------*/
+
+.news {
+   margin:0px;
+   padding:0px; 
+}
+
+.news .article-wrapper {
+	position: relative;
+   float: left;
+   left: 0.00%;
+   width: 100.00%;
+   border:1px solid #dedede;
+   margin-bottom:5px;
+}
+
+.news .article-wrapper .image{
+   position: relative;
+   float: left;
+   left: 0%;
+   width: 25.00%;
+}
+.news .article-wrapper .article-content{
+   position: relative;
+   float: right;
+   right: 0%;
+   width: 74.50%;
+}
+.news .article-wrapper .article-content h5 {
+	margin:0px 0px 5px 0px;
+	padding:0px;
+}
+
+/*
 .news {
    margin:0px;
    padding:0px; 
@@ -259,6 +292,8 @@ ul.cdays li.day {width:100%; height:40px; margin:0 0 10px 0; position:relative; 
 .news li .content-wrapper p.desc font {
     color: #000 !important;
 }
+*/
+
 /*-----------------Blog posts style-------------------*/
 ul.posts{ padding:0px; margin:0px; width:100%; display:block;}
 ul.posts li.post{ width:100%; height:80px; margin:0 0 10px 0; position:relative;}

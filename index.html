@@ -25,6 +25,7 @@
 
 	<script type="text/javascript" src="js/jquery/jquery.swipebox.js"></script>
 	<script type="text/javascript" src="js/jquery/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/readmore.js"></script>
     
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
     
@@ -201,8 +202,8 @@
             ÜYELİK ALANI
         </div>
      </div>
-     
-      <div class="swiper-slide sliderbg">
+ <!--Page 4 content-->    
+      <div class="swiper-slide sliderbg"  data-title="Etkinlikler">
         <div class="swiper-container swiper-nested" data-title="Sosyal Etkinlikler">
           <div class="pages_container">
                 <ul class="photo_gallery_13">
@@ -216,7 +217,7 @@
           </div>
         </div>                            
       </div>
-<!--Page 4 content-->
+<!--Page 5 content-->
       <div class="swiper-slide sliderbg" data-title="Winner Card">
       <div class="pages_container">
             <div class="swiper-container swiper-nested5 vertical-container">
@@ -244,7 +245,7 @@
         </div>
      </div>
      
-<!--Page 5 content-->
+<!--Page 6 content-->
       <div class="swiper-slide sliderbg" data-title="Powerfull Akademi">
         <div class="pages_container akademi_container">
             <div class="swiper-container swiper-nested6 vertical-container">
@@ -262,7 +263,7 @@
             
         </div>
      </div>
-<!--Page 6 content-->
+<!--Page 7 content-->
       <div class="swiper-slide sliderbg" data-title="Personal Training">
       <div class="swiper-container swiper-nested">
                <div class="swiper-wrapper">
@@ -277,7 +278,7 @@
               </div>
      </div>
      </div>
-<!--Page 7 content-->
+<!--Page 8 content-->
       <div class="swiper-slide sliderbg" data-title="Wellness">
       <div class="swiper-container swiper-nested">
                <div class="swiper-wrapper">
@@ -303,15 +304,15 @@
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">  
                             <ul ng-controller="newsController" class="news">
-                                <li ng-repeat="item in data">
-                                    <div class="img-wrapper">
-                                        <img v-align="left" src="http://caddebostan.powerfullclub.com/services.php?action=ximage&sourcePath={{item.image}}&canvasColor=%23FFFFFF&resizeOperator=fillcolor&publishWithUID=1&width=90&height=90" />
-                                    </div>
-                                    <div class="content-wrapper">
-                                        <h5>{{item.title}}</h5>
-                                        <p ng-bind-html="item.desc" class="desc"></p>
-                                    </div>
-                                </li>
+                            	<li ng-repeat="item in data" class="article-wrapper">
+							        <div class="image">
+							            <img src="http://caddebostan.powerfullclub.com/services.php?action=ximage&sourcePath={{item.image}}&canvasColor=%23FFFFFF&resizeOperator=fillcolor&publishWithUID=1&width=90&height=90" />
+							        </div>
+							        <div class="article-content">
+							            <h5>{{item.title}}</h5>
+							            <p ng-bind-html="item.desc" class="desc"></p>
+							        </div> 
+							    </li>
                             </ul>
                         </div>
 
