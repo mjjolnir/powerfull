@@ -48,8 +48,33 @@
 
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
-    .gallery-wrapper .tp-grid img {
+    
+}
+
+@media only screen and (min-device-width : 320px) {
+	.gallery-wrapper .tp-grid img {
     	width:115px;
+    	height:auto;
+    }
+}
+
+@media only screen and (min-device-width : 375px) {
+	.gallery-wrapper .tp-grid img {
+    	width:130px;
+    	height:auto;
+    }
+}
+
+@media only screen and (min-device-width : 414px) {
+	.gallery-wrapper .tp-grid img {
+    	width:150px;
+    	height:auto;
+    }
+}
+
+@media only screen and (min-device-width : 414px) {
+	.gallery-wrapper .tp-grid img {
+    	width:250px;
     	height:auto;
     }
 }
@@ -78,44 +103,38 @@ iPad 3
 
 /* iPhone 4 ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
+
 }
 
 /* iPhone 5 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-/* Styles */
+
 }
 
 /* iPhone 6 ----------- */
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
- 
+
 }
 
 /* iPhone 6+ ----------- */
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
-    
+    #main-bg-wrapper {
+		background-color:black;
+	}
 }
 
 /* Samsung Galaxy S3 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 
-	.gallery-wrapper .tp-grid img {
-    	width:120px;
-    	height:auto;
-    }
 }
 
 /* Samsung Galaxy S4 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
-/* Styles */
+
 }
 
 /* Samsung Galaxy S5 ----------- */
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
 	
-	.gallery-wrapper .tp-grid img {
-    	width:120px;
-    	height:auto;
-    }
-    
 }
+
