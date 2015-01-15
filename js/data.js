@@ -160,12 +160,11 @@
 	        
 	        setTimeout(function(){
 				swipernested9.reInit();
-				$("article-content").readmore({
+				$(".article-content").readmore({
 					collapsedHeight: 100,
 					moreLink: '<a href="#">Read more</a>',
 					lessLink: '<a href="#">Close</a>'
 				});
-				console.log("runnnnnnn");
 			},2000);
 	        
 	      }).
