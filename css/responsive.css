@@ -72,9 +72,16 @@
     }
 }
 
-@media only screen and (min-device-width : 414px) {
+@media only screen and (min-device-width : 720px) {
 	.gallery-wrapper .tp-grid img {
     	width:250px;
+    	height:auto;
+    }
+}
+
+@media only screen and (min-device-width : 480px) {
+	.gallery-wrapper .tp-grid img {
+    	width:180px;
     	height:auto;
     }
 }
