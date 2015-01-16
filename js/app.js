@@ -12,12 +12,10 @@ function resize() {
 }
 
 setTimeout(function() {
-	if(navigator.splashscreen)  navigator.splashscreen.hide();
-}, 8000);
-
-setTimeout(function() {
 	resize();
-}, 3000);
+	if(navigator.splashscreen)  navigator.splashscreen.hide();
+}, 6000);
+
 
  $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
         e.stopPropagation();
@@ -40,7 +38,13 @@ setTimeout(function() {
 	});
 	
 	//Vertical Scroll Containers
-
+	var swiperverticalmain = $('.swiper-vertical-main').swiper({
+		mode:'vertical',
+        slidesPerView: 1
+	});
+	
+	
+	
 	var swipernested1 = $('.swiper-nested1').swiper({
 	        mode:'vertical',
 	        slidesPerViewFit:false,
@@ -131,6 +135,7 @@ setTimeout(function() {
     
     $('.gohome').click(function(){
     	swiperParent.swipeTo(0);
+   	 	swiperverticalmain.swipeTo(0);
     	return false;
     });
     
