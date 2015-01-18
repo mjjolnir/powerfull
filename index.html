@@ -99,7 +99,7 @@
       <div class="pages_container">
         <div class="swiper-container swiper-nested1 vertical-container">
                <div class="swiper-wrapper">
-                    <div class="swiper-slide">   
+                    <div class="swiper-slide">
                             <div class="toogle_wrap radius8">
                                 <div class="trigger"><a href="#">Powerfull Caddebostan<img src="images/club1.jpg"></a></div>
                                 <div class="toggle_container">
@@ -176,7 +176,7 @@
                                         </div>  
                                         
                                         <div class="clearfix"></div>
-      									<div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+      									<div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                                         <!--End of page container-->
                     </div>
               </div>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="clearfix"></div>
-                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                         </div>
                   </div>
             </div>
@@ -283,7 +283,7 @@
 
                         <div class="swiper-slide">
                             <div class="clearfix"></div>
-                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                         </div>
                   </div>
             </div>
@@ -301,7 +301,7 @@
 
                         <div class="swiper-slide">
                             <div class="clearfix"></div>
-                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                         </div>
                   </div>
             </div>
@@ -359,31 +359,58 @@
 
                         <div class="swiper-slide">
                             <div class="clearfix"></div>
-                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Go on top" title="Go on top" /></a></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                         </div>
                 </div>
             </div>
             
         </div>
      </div>
-       
+
+<!--Page 10 content-->
+      <div class="swiper-slide sliderbg" data-title="Twitter">
+        <div class="pages_container">
+            <div class="swiper-container swiper-nested10 vertical-container">
+                <div class="swiper-wrapper">
+                
+                        <div class="swiper-slide">  
+                            <ul ng-controller="twitterController">
+                            	<li ng-repeat="item in data">
+                            		<div>{{timeAgo(item.created_at)}}</div>
+							        <p ng-bind-html="ify.clean(item.text)"></p>
+							    </li>
+                            </ul>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="clearfix"></div>
+                            <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+     </div>
+     
+<!--Page 11 content-->
+      <div class="swiper-slide sliderbg" data-title="Facebook">
+        <div class="pages_container">
+            <div class="swiper-container swiper-nested11 vertical-container">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">  
+                       <iframe height=600 width=500 name="facebook" src="http://powerfullclub.com/facebook.proxy.php" ></iframe>
+                   </div>
+                </div>
+            </div>
+            
+        </div>
+     </div>
      <!--End of pages--> 
 
     </div>
     <div class="pagination"></div>
   </div>
-  
-  <!-- 
-  <div id="footer-menu">
-      <ul>
-          <li><div class="footer-icon clearfix"><img src="images/footer_icons/phone.png"></div><div class="footer-label"><a class="call_button" href="#">Arama Yap</a></div></li>
-          <li><div class="footer-icon clearfix"><img src="images/footer_icons/share.png"></div><div class="footer-label">Powershare</div></li>
-          <li><div class="footer-icon clearfix"><img src="images/footer_icons/map.png"></div><div class="footer-label">Neredeyiz</div></li>
-          <li><div class="footer-icon clearfix"><img src="images/footer_icons/contact.png"></div><div class="footer-label">İletişim</div></li>
-      </ul>
-  </div>
- -->
- 
+
  <div id="footer-menu">
         <div class="btn-call-phone">
             <div class="btn-footer">
@@ -409,7 +436,7 @@
 
 
 	<script src="js/app.js"></script>
-	<script src="js/data.js"></script>
+	<script src="js/data.js" charset="UTF-8"></script>
 	
 	<script type="text/javascript">	
 			$(function() {
@@ -417,8 +444,7 @@
 				var $grid = $( '#tp-grid' ),
 					$name = $( '#name' ),
 					$close = $( '#close' ),
-					$topbar = $('.gallery-wrapper .topbar-wrapper');
-					$loader = $( '<div class="loader"><i></i><i></i><i></i><i></i><i></i><i></i><span>Loading...</span></div>' ).insertBefore( $grid ),
+					$loader = $( '<div class="loader"><span>yükleniyor...</span></div>' ).insertBefore( $grid ),
 					stapel = $grid.stapel( {
 						delay : 50,
 						gutter : 6,
@@ -430,10 +456,10 @@
 							
 						},
 						onAfterOpen : function( pileName ) {
-							$topbar.slideDown('slow');
+							$('.gallery-wrapper .topbar-wrapper').slideDown();
 						},
 						onAfterClose: function(pileName) { 
-							$topbar.slideUp('slow');
+							$('.gallery-wrapper .topbar-wrapper').slideUp();
 						}
 					} );
 

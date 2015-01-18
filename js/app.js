@@ -130,6 +130,21 @@ setTimeout(function() {
 			swipernested9.swipeTo(0);
 	});
 	
+	var swipernested10 = $('.swiper-nested10').swiper({
+        mode:'vertical',
+        slidesPerViewFit:false,
+        freeMode: true,
+        freeModeFluid:true,
+        slidesPerView: 'auto'
+	});
+	
+	
+
+	$('#footer-menu .btn-twitter').click(function(){
+		swiperParent.swipeTo(10);
+	});
+	
+	
 	
 	$(".swipebox").swipebox();
     
