@@ -25,8 +25,8 @@
     
     <gap:splash src="splash.png" />
     
+    <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
     <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
     
 </widget>

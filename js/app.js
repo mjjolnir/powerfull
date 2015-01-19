@@ -137,14 +137,34 @@ setTimeout(function() {
         freeModeFluid:true,
         slidesPerView: 'auto'
 	});
-	
+	$('.swiper-nested10 .scrolltop').click(function() {					  
+		swipernested10.swipeTo(0);
+	});
 	
 
+	
+	$('#footer-menu .btn-call-phone').click(function(){
+		phonedialer.dial(
+				  "+905558609841", 
+		  function(err) {
+		    if (err == "empty") alert("Unknown phone number");
+		    else alert("Dialer Error:" + err);    
+		  },
+		  function(success) { alert('Dialing succeeded'); }
+		);
+	});
+	
 	$('#footer-menu .btn-twitter').click(function(){
 		swiperParent.swipeTo(10);
 	});
 	
+	$('#footer-menu .btn-facebook').click(function(){
+		swiperParent.swipeTo(11);
+	});
 	
+	$('#footer-menu .btn-contact').click(function(){
+		swiperParent.swipeTo(12);
+	});
 	
 	$(".swipebox").swipebox();
     
