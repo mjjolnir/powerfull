@@ -318,13 +318,7 @@
 	
 	powerfullApp.controller('contactController',function($scope, $http, $templateCache) {
 	    
-		 
-		readAsText("data/contacts.json");
+		var path = window.location.href;
+		alert(path);
 		
 	});
-
-	function readAsText(file) {
-			if (cordova) {
-				alert(cordova.file.cacheDirectory);
-			}
-		}
