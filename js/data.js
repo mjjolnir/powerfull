@@ -318,13 +318,13 @@
 	
 	powerfullApp.controller('contactController',function($scope, $http, $templateCache) {
 	    
-		var mainInfo = null;
-		$http.get('data/contacts.json').success(function(data) {
-		    mainInfo = data;
-		    alert("contact data loaded success. " . data.storedKey);
-		    setTimeout(function(){
-				//swipernested12.reInit();
-			},2000);
-		});
+		 
+		readAsText("data/contacts.json");
 		
 	});
+
+	function readAsText(file) {
+			if (cordova) {
+				alert(cordova.file.cacheDirectory);
+			}
+		}

@@ -30,6 +30,7 @@
     
     <script type="text/javascript" src="js/jquery/modernizr.custom.63321.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.stapel.js"></script>
+    <script type="text/javascript" src="js/query/jquery.jsonp.min.js"></script>
     
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
     
@@ -414,8 +415,8 @@
                    <div class="swiper-slide">  
                       <ul ng-controller="contactController">
                          <li ng-repeat="item in data">
-					        <p ng-bind-html="item.text"></p>
-					     </li>
+							 <h5>{{item.title}}</h5>
+						 </li>
                       </ul>
                    </div>
                 </div>
