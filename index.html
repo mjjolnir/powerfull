@@ -44,7 +44,7 @@
    <div id="header">
    	   <h2 class="header-title"></h2>
       <div class="gohome radius20"><a href="#"><img src="images/icons/home.png" alt="" title="" /></a></div>
-      <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(10);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
+      <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(12);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
       
   </div>
   <div class="swiper-container swiper-parent">
@@ -412,7 +412,11 @@
             <div class="swiper-container swiper-nested12 vertical-container">
                 <div class="swiper-wrapper">
                    <div class="swiper-slide">  
-                      iletişim
+                      <ul ng-controller="contactController">
+                         <li ng-repeat="item in data">
+					        <p ng-bind-html="item.text"></p>
+					     </li>
+                      </ul>
                    </div>
                 </div>
             </div>
@@ -426,7 +430,7 @@
     <div class="pagination"></div>
   </div>
 
- <div id="footer-menu">
+ 	<div id="footer-menu">
         <div class="btn-call-phone">
             <div class="btn-footer">
             	<img src="images/footer_icons/phone.png"><div class="clearfix"></div><div>Arama Yap</div>

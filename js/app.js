@@ -144,14 +144,22 @@ setTimeout(function() {
 
 	
 	$('#footer-menu .btn-call-phone').click(function(){
-		phonedialer.dial(
-				  "+905558609841", 
-		  function(err) {
-		    if (err == "empty") alert("Unknown phone number");
-		    else alert("Dialer Error:" + err);    
-		  },
-		  function(success) { alert('Dialing succeeded'); }
-		);
+		var r = confirm("+905335645125 aransın mı?");
+	    if (r == true) {
+	    	var p = device.platform;
+	    	if (p == "Android" || p == "iOS") {
+	    		phonedialer.dial( "+905335645125", 
+	    				  function(err) {
+	    				    if (err == "empty") alert("Telefon numarası çözümlenemedi!");
+	    				    else alert("Hata :" + err);    
+	    				  },
+	    				  function(success) { }
+	    				);
+	    	} else {
+	    		alert("Telefonunuz Bu Fonksiyonu Desteklemiyor.");
+	    	}
+	    }
+		
 	});
 	
 	$('#footer-menu .btn-twitter').click(function(){

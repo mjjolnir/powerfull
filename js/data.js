@@ -183,13 +183,13 @@
 	        $scope.data = data.data;
 	        
 	        setTimeout(function(){
-				swipernested9.reInit();
 				$(".article-content").readmore({
 					collapsedHeight: 100,
-					moreLink: '<a href="#">Read more</a>',
-					lessLink: '<a href="#">Close</a>'
+					moreLink: '<a href="#">Devamı</a>',
+					lessLink: '<a href="#">Kapat</a>'
 				});
-			},2000);
+				swipernested9.reInit();
+			},4000);
 	        
 	      }).
 	      error(function(data, status) {
@@ -313,4 +313,18 @@
 	        		  return "";
 	          }
 	     } // ify
+	});
+	
+	
+	powerfullApp.controller('contactController',function($scope, $http, $templateCache) {
+	    
+		var mainInfo = null;
+		$http.get('data/contacts.json').success(function(data) {
+		    mainInfo = data;
+		    alert("contact data loaded success. " . data.storedKey);
+		    setTimeout(function(){
+				//swipernested12.reInit();
+			},2000);
+		});
+		
 	});
