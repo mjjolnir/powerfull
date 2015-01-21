@@ -30,8 +30,7 @@
     
     <script type="text/javascript" src="js/jquery/modernizr.custom.63321.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.stapel.js"></script>
-    <script type="text/javascript" src="js/query/jquery.jsonp.min.js"></script>
-    
+
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
     
     <title>Powerfull Club</title>
@@ -399,7 +398,7 @@
             <div class="swiper-container swiper-nested11 vertical-container">
                 <div class="swiper-wrapper">
                    <div class="swiper-slide">  
-                       <iframe height=600 width=500 name="facebook" src="http://www.facebook.com/powerfullclub" ></iframe>
+                       <iframe height=600 width=500 name="facebook" src="http://powerfullclub.com/facebook.proxy.php" ></iframe>
                    </div>
                 </div>
             </div>
@@ -412,12 +411,31 @@
         <div class="pages_container">
             <div class="swiper-container swiper-nested12 vertical-container">
                 <div class="swiper-wrapper">
-                   <div class="swiper-slide">  
-                      <ul ng-controller="contactController">
-                         <li ng-repeat="item in data">
-							 <h5>{{item.title}}</h5>
+                   <div class="swiper-slide" ng-controller="contactController">
+                   	  <div class="contact-group">
+                   	    <div class="input-wrapper input-search shadow-inset input-has-clear radius5"><input placeholder="Arama Yap..." data-type="search"><a class="input-clear2 ui-btn icon-delete btn-icon-notext icon-delete radius-5" aria-hidden="true" tabindex="-1" href="#" title="içeriği temizle">temizle</a></div>
+                   	  	<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+                         <li ng-class="{'ui-first-child' : $index==0,'ui-last-child' : $index==data.length-1}" ng-repeat="group in data" ng-click="showPersons($event,$index,group)">
+							<a class="ui-btn ui-btn-icon-right ui-icon-carat-r">{{group.title}}</a> 
 						 </li>
-                      </ul>
+                      	</ul>
+                      	<ul>
+                      		<li ng-repeat="person in persons" ng-click="showDetail($event,$index,person)">{{person.title}}</li>
+                      	</ul>
+                      	<ul>
+                      		<li>{{details.label}}</li>
+                      		<li>{{details.tel}}</li>
+                      		<li>{{details.mail}}</li>
+                      		<li>{{details.web}}</li>
+                      		<li>{{details.address}}</li>
+                      		
+                      	</ul>
+                   	  </div>
+                      
+                   </div>
+                   <div class="swiper-slide">
+                       <div class="clearfix"></div>
+                       <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
                    </div>
                 </div>
             </div>

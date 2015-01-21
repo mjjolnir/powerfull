@@ -195,4 +195,13 @@ setTimeout(function() {
         return false;
     });
 
+    if (cordova) {
+    	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+        telephoneNumber.get(function(result) {
+                alert(result);
+            }, function() {
+                alert("error");
+            });
+    }
+    
 
