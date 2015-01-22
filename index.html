@@ -398,7 +398,7 @@
             <div class="swiper-container swiper-nested11 vertical-container">
                 <div class="swiper-wrapper">
                    <div class="swiper-slide">  
-                       <iframe height=600 width=500 name="facebook" src="http://powerfullclub.com/facebook.proxy.php" ></iframe>
+                       FACEBOOK CONTENT
                    </div>
                 </div>
             </div>
@@ -413,30 +413,45 @@
                 <div class="swiper-wrapper">
                    <div class="swiper-slide" ng-controller="contactController">
                    	  <div class="contact-group">
-                   	    <div class="input-wrapper input-search shadow-inset input-has-clear radius5"><input placeholder="Arama Yap..." data-type="search"><a class="input-clear2 ui-btn icon-delete btn-icon-notext icon-delete radius-5" aria-hidden="true" tabindex="-1" href="#" title="içeriği temizle">temizle</a></div>
-                   	  	<ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                         <li ng-class="{'ui-first-child' : $index==0,'ui-last-child' : $index==data.length-1}" ng-repeat="group in data" ng-click="showPersons($event,$index,group)">
-							<a class="ui-btn ui-btn-icon-right ui-icon-carat-r">{{group.title}}</a> 
+                      	<form name="contact-search-form" ng-show="viewSearchField">
+                   	    <div class="input-wrapper input-search shadow-inset input-has-clear radius8"><input id="contact-search" placeholder="Arama Yap..." ng-model="query" ng-change="onSearch()"><a class="input-clear ui-btn icon-delete btn-icon-notext icon-delete radius-5" aria-hidden="true" tabindex="-1" href="#" title="içeriği temizle">temizle</a></div>
+                        </form>
+                        
+						<ul class="listview  radius8 shadow" ng-show="viewSearchList">
+                         <li ng-class="{'list-first-child' : $index==0,'ui-last-child' : $index==groups.length-1}" ng-repeat="contact in contacts | filter:query" ng-click="showDetail($event,$index,contact)">
+							<a class="list-btn  icon-carat-r">{{contact.title}}</a>
 						 </li>
                       	</ul>
-                      	<ul>
-                      		<li ng-repeat="person in persons" ng-click="showDetail($event,$index,person)">{{person.title}}</li>
+                      	
+                   	  	<ul class="listview  radius8 shadow" ng-show="viewGroup">
+                         <li ng-class="{'list-first-child' : $index==0,'ui-last-child' : $index==groups.length-1}" ng-repeat="group in groups" ng-click="showPersons($event,$index,group)">
+							<a class="list-btn  icon-carat-r">{{group.title}}</a>
+						 </li>
                       	</ul>
-                      	<ul>
-                      		<li>{{details.label}}</li>
-                      		<li>{{details.tel}}</li>
-                      		<li>{{details.mail}}</li>
-                      		<li>{{details.web}}</li>
-                      		<li>{{details.address}}</li>
-                      		
-                      	</ul>
+                        
+                        <div class="contacts-list" ng-show="viewContacts">
+                        	<div class="shadow"><a class="list-btn btn-back radius8" ng-click="showGroup()">Kategorilere Geri Dön</a></div>
+	                      	<ul class="listview  radius8 shadow" >
+	                      		<li ng-class="{'list-first-child' : $index==0,'list-last-child' : $index==data.length-1}" ng-repeat="person in persons" ng-click="showDetail($event,$index,person)">
+	                            	<a class="list-btn  icon-carat-r">{{person.title}}</a>
+	                            </li>
+	                      	</ul>
+                        </div>
+                        
+                        <div ng-show="viewDetail" class="contact-detail">
+                        	<div class="shadow"><a class="list-btn btn-back radius8" ng-click="showPersons(null,null,pListData)">Listeye Geri Dön</a></div>
+	                      	<ul class="listview  radius8 shadow" >
+	                      		<li class="list-first-child"><a class="list-btn">{{details.label}}</a></li>
+	                      		<li><a class="list-btn  icon-carat-r" href="tel:{{details.tel}}">{{details.tel}}</a></li>
+	                      		<li><a class="list-btn  icon-carat-r" href="mailto:{{details.mail}}">{{details.mail}}</a></li>
+	                      		<li><a class="list-btn  icon-carat-r"  href="{{details.mail}}" target="_blank">{{details.web}}</a></li>
+	                      		<li class="list-last-child"><a class="list-btn ">{{details.address}}</a></li>
+	                      	</ul>
+                      	</div>
                    	  </div>
                       
                    </div>
-                   <div class="swiper-slide">
-                       <div class="clearfix"></div>
-                       <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
-                   </div>
+ 
                 </div>
             </div>
             

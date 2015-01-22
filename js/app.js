@@ -159,7 +159,6 @@ setTimeout(function() {
 	    		alert("Telefonunuz Bu Fonksiyonu Desteklemiyor.");
 	    	}
 	    }
-		
 	});
 	
 	$('#footer-menu .btn-twitter').click(function(){
@@ -194,14 +193,4 @@ setTimeout(function() {
         $(this).toggleClass("activep").next().slideToggle("slow");
         return false;
     });
-
-    if (cordova) {
-    	var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
-        telephoneNumber.get(function(result) {
-                alert(result);
-            }, function() {
-                alert("error");
-            });
-    }
-    
 

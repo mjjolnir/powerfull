@@ -367,67 +367,183 @@
 	
 	
 	powerfullApp.controller('contactController',function($scope, $http, $templateCache) {
-		$scope.data = [{
-			title:"Merkezler",
-			items:[{
-				title:"Powerfull Caddebostan",
-				detail:{
-					image:"images/contact/logo.png",
-					tel:"+90(216)3567171",
-					mail:"info@powerfullclub.com",
-					web:"http://caddebostan.powerfullclub.com",
-					address:"Bağdat Cad. Haldun Taner Sok. Caddebostan Kültür Merkezi no:11 Kadıköy/Istanbul"
-				}
-			},{
-				title:"Powerfull Fenerbahçe",
-				detail:{
-					image:"images/contact/logo.png",
-					tel:"+90(216)33003999",
-					mail:"info@powerfullclub.com",
-					web:"http://fenerbahce.powerfullclub.com",
-					address:"Fenerbahçe Kalamış Cad. no:93 Kadıköy/Istanbul"
-				}
-			},{
-				title:"Powerfull Angora",
-				detail:{
-					image:"images/contact/logo.png",
-					tel:"+90(216)3694450",
-					mail:"info@powerfullclub.com",
-					web:"http://angora.powerfullclub.com",
-					address:"Caddebostan Mah. Bağdat Cad. No:272 Angora Residance (Caddebostan Namlı Gurme'nin alt katı) Kadıköy/Istanbul"
-				}
-			}]
-		},{
-			title:"Eğitmenler",
-			items:[{
-				title:"Eğitmen isim 1",
-				detail:{
-					image:"images/contact/logo.png",
-					tel:"212900211",
-					mail:"info@powerfullclub.com",
-					web:"http://powerfullclub.com",
-					address:""
-				}
-			},{
-				title:"Eğitmen isim 2",
-				detail:{
-					image:"images/contact/logo.png",
-					tel:"2161112233",
-					mail:"info@powerfullclub.com",
-					web:"http://powerfullclub.com",
-					address:""
-				}
-			}]
-		}];
-		$scope.persons = $scope.data[0].items;
-		$scope.details = $scope.data[0].items[0].detail;
 		
+		// -- Define Controller Methods. ------------ //
+
+
+        // I sort the given collection on the given property.
+        function sortOn( collection, name ) {
+
+            collection.sort(
+                function( a, b ) {
+
+                    if ( a[ name ] <= b[ name ] ) {
+
+                        return( -1 );
+
+                    }
+
+                    return( 1 );
+
+                }
+            );
+
+        }
+        
+     // I group the friends list on the given property.
+        $scope.groupBy = function( attribute ) {
+
+            // First, reset the groups.
+            $scope.groups = [];
+
+            // Now, sort the collection of friend on the
+            // grouping-property. This just makes it easier
+            // to split the collection.
+            sortOn( $scope.contacts, attribute );
+
+            // I determine which group we are currently in.
+            var groupValue = "_INVALID_GROUP_VALUE_";
+
+            // As we loop over each friend, add it to the
+            // current group - we'll create a NEW group every
+            // time we come across a new attribute value.
+            for ( var i = 0 ; i < $scope.contacts.length ; i++ ) {
+
+                var contact = $scope.contacts[ i ];
+
+                // Should we create a new group?
+                if ( contact[ attribute ] !== groupValue ) {
+
+                    var group = {
+                        title: contact[ attribute ],
+                        items: []
+                    };
+
+                    groupValue = group.title;
+
+                    $scope.groups.push( group );
+
+                }
+
+                // Add the friend to the currently active
+                // grouping.
+                group.items.push( contact );
+
+            }
+
+        };
+        
+        
+		$scope.contacts = [{
+					title:"Powerfull Caddebostan",
+					group:"Merkezler",
+					detail:{
+						image:"images/contact/logo.png",
+						tel:"+90(216)3567171",
+						mail:"info@powerfullclub.com",
+						web:"http://caddebostan.powerfullclub.com",
+						address:"Bağdat Cad. Haldun Taner Sok. Caddebostan Kültür Merkezi no:11 Kadıköy/Istanbul"
+					}
+				},{
+					title:"Powerfull Fenerbahçe",
+					group:"Merkezler",
+					detail:{
+						image:"images/contact/logo.png",
+						tel:"+90(216)33003999",
+						mail:"info@powerfullclub.com",
+						web:"http://fenerbahce.powerfullclub.com",
+						address:"Fenerbahçe Kalamış Cad. no:93 Kadıköy/Istanbul"
+					}
+				},{
+					title:"Powerfull Angora",
+					group:"Merkezler",
+					detail:{
+						image:"images/contact/logo.png",
+						tel:"+90(216)3694450",
+						mail:"info@powerfullclub.com",
+						web:"http://angora.powerfullclub.com",
+						address:"Caddebostan Mah. Bağdat Cad. No:272 Angora Residance (Caddebostan Namlı Gurme'nin alt katı) Kadıköy/Istanbul"
+					}
+				},{
+					title:"Eğitmen isim 1",
+					group:"Eğitmenler",
+					detail:{
+						image:"images/contact/logo.png",
+						tel:"212900211",
+						mail:"info@powerfullclub.com",
+						web:"http://powerfullclub.com",
+						address:""
+					}
+				},{
+					title:"Eğitmen isim 2",
+					group:"Eğitmenler",
+					detail:{
+						image:"images/contact/logo.png",
+						tel:"2161112233",
+						mail:"info@powerfullclub.com",
+						web:"http://powerfullclub.com",
+						address:""
+					}
+				}];
+		
+		$scope.groups = [];
+		$scope.groupBy("group");
+		$scope.groups.reverse();
+		
+		$scope.persons = $scope.groups[0].items;
+		$scope.details = $scope.groups[0].items[0].detail;
+		
+		$scope.viewSearchField = false;
+		$scope.viewGroup = false;
+		$scope.viewContacts = false;
+		$scope.viewDetail = false;
+		$scope.viewSearchList = false;
+		
+		$scope.pListData = null;
 		$scope.showPersons = function(e,index,data) {
+			$scope.pListData = data;
 			$scope.persons = data.items;
+			$scope.viewGroup = false;
+			$scope.viewContacts = true;
+			$scope.viewDetail = false;
+			$scope.viewSearchList = false;
+			$scope.viewSearchField = false;
 		}
 		
 		$scope.showDetail = function(e,index,person) {
 			$scope.details = person.detail;
 			$scope.details.label = person.title;
+			$scope.viewGroup = false;
+			$scope.viewContacts = false;
+			$scope.viewDetail = true;
+			$scope.viewSearchList = false;
+			$scope.viewSearchField = false;
+		}
+		
+		$scope.showGroup = function() {
+			$scope.viewGroup = true;
+			$scope.viewContacts = false;
+			$scope.viewDetail = false;
+			$scope.viewSearchList = false;
+			$scope.viewSearchField = true;
+		}
+		
+		$scope.showSearchList = function(e) {
+			$scope.viewGroup = false;
+			$scope.viewContacts = false;
+			$scope.viewDetail = false;
+			$scope.viewSearchList = true;
+			$scope.viewSearchField = true;
+		}
+		
+		$scope.showGroup();
+		
+		$scope.onSearch = function() {
+			$value = $('#contact-search').val();
+			if ($value.length == 0) {
+				$scope.showGroup();
+			} else {
+				$scope.showSearchList();
+			}
 		}
 	});
