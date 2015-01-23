@@ -1,4 +1,6 @@
-	
+
+
+
 (function(window, angular, undefined) {'use strict';
     var agl = angular || {};
     var ua  = navigator.userAgent;
@@ -78,6 +80,81 @@
 	    }
 	});
 
+	powerfullApp.controller("memberController", function($scope, $http, $templateCache) {
+
+		$scope.login = function() {
+			var store = window.localStorage;
+			var memberID = null;
+			if(store) {
+				var memberID = store.getItem("memberID");
+				if (memberID) {
+					$scope.requestUserInfo();
+				} else {
+					var id = prompt("Lütfen üye numaranızı giriniz?", "üye no");
+					if (!$scope.isEmpty(id) && $scope.isNumber(id)) {
+						store.setItem("memberID", id);
+						$scope.requestUserInfo();
+					}
+					return false;
+				}
+			}
+		}
+		
+		$scope.getMemberID = function() {
+			var store = window.localStorage;
+			var memberID = store.getItem("memberID");
+			 if (memberID) {
+				 return memberID;
+			 } else {
+				 $scope.login();
+			 }
+		}
+		
+		$scope.setBusy = function(bool) {
+			$scope.isBusy = bool;
+		}
+		
+		$scope.requestUserInfo = function() {
+			var id = $scope.getMemberID();
+			console.log(id);
+			if (id) {
+				
+				$http({
+			        method: 'JSONP', 
+			        url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MembersInfo&id='+id, 
+			        cache: $templateCache
+			    }).success(function(data, status) {
+			    	  $scope.memberinfo = data;
+			    	  
+			      }).error(function(data, status) {
+			        
+			    });
+				 
+			}
+		}
+		
+
+		$scope.isEmpty = function(val){
+		    return (val === undefined || val == null || val.length <= 0) ? true : false;
+		};
+		
+		$scope.isNumber = function(n)  {
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+		
+		$scope.registerMemeberId = function() {
+			
+		};
+		
+		$scope.loadMemeberInfo = function() {
+			
+		};
+		
+		$scope.get
+		
+	});
+	
+	
 	powerfullApp.controller('winnerCardController',function($scope, $http, $templateCache) {
 	    $scope.prepdata = [
 	                       {

@@ -221,7 +221,15 @@
 <!--Page 3 content-->
       <div class="swiper-slide sliderbg" data-title="Üyelere Özel">
         <div class="pages_container">
-            ÜYELİK ALANI
+            <div class="swiper-container swiper-nested3 vertical-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                    	<div id="memberController" ng-controller="memberController">
+                    		{{memberinfo.CepTel}}
+                    	</div>
+                    </div>
+                </div>
+            </div>
         </div>
      </div>
  <!--Page 4 content-->    

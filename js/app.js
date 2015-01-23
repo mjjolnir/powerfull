@@ -34,6 +34,11 @@ setTimeout(function() {
 	      if (swiperParent.activeIndex == 0){
 	        $('#header').animate({'top':'-100px'},400);
 	      }
+	      //üyelik alanı sorgusu
+	      if (swiperParent.activeIndex == 3) {
+	    	  var ctrl = angular.element(document.getElementById('memberController')).scope();
+	    	  ctrl.login();
+	      }
 	    }
 	});
 	
