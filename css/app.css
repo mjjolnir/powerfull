@@ -121,6 +121,87 @@ h2.page_title{ font-size:30px;padding:0 0 20px 0;}
 
 /* ------------------------- UI -------------------*/
 /*------------------------------------------*/
+.member-page {
+	padding-top:9px !important;
+}
+
+.member-info-panel {
+	height:135px;
+  width:100%;
+  text-align: center;
+    background-color: #f4f4f4;
+   margin-bottom:10px;
+   position:relative;
+}
+
+.member-info-panel .top-frame {
+    width:100%;
+    height:70px;
+	
+}
+
+.member-info-panel .top-frame .deleteinfo {
+    position: absolute;
+    top:5px;
+    left:5px;
+    width:24px;
+    height:24px;
+}
+
+.member-info-panel .top-frame .refreshinfo {
+    position: absolute;
+    top:5px;
+    right:5px;
+    width:24px;
+    height:24px;
+}
+
+.member-info-panel .top-frame .member-id  {
+    color:#fff;
+    position: absolute;
+    right:5px;
+    top:50px;
+}
+
+
+.member-info-panel .user-headline {
+    text-align: left;
+    margin:0px 8px;
+}
+
+.member-info-panel .member-info-img {
+	width:100px;
+	height:100px;
+	border:3px solid #fff;
+  margin-top:-50px;
+  float:left;
+  z-index:999;
+}
+
+.member-info-panel .user-headline-data {
+    float:left;
+}
+.member-info-panel .user-headline-data .name {
+    font-size:16px;
+    font-weight: 700;
+}
+.member-info-panel .user-headline-data .mail {
+    color:#c5c5c5;
+}
+
+.loading {
+	width:100%;
+	height:100%;
+	position:relative;
+}
+
+.loading img {
+	position:absolute;
+	top:35%;
+	left:35%;
+	width:90px;
+	height:auto;
+}
 
 /* Border radius */
 .radius4{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}

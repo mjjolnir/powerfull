@@ -220,12 +220,72 @@
      
 <!--Page 3 content-->
       <div class="swiper-slide sliderbg" data-title="Üyelere Özel">
-        <div class="pages_container">
+        <div class="pages_container member-page">
             <div class="swiper-container swiper-nested3 vertical-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                     	<div id="memberController" ng-controller="memberController">
-                    		{{memberinfo.CepTel}}
+                        
+                    		<div ng-show="isBusy" class="loading"><img src="images/loader.gif" /></div>
+                            
+                    			<div ng-show="viewUserInfo" class="viewUserInfo">
+                    				<div class="member-info-panel radius8 shadow" >
+                                        <div class="top-frame">
+                                        	<div class="deleteinfo" ng-click="deleteAll()"></div>
+                                        	<div class="refreshinfo" ng-click="reloadAll()"></div>
+                                            <div class="member-id">Üye Kayıt No : {{MembersInfo.OzelKod}}</div>
+                                        </div>
+                                        <div class="user-headline">
+                                        	<img ng-src="data:image/jpeg;base64,{{MembersInfo.Resim}}" class="member-info-img radius200" />
+                                            <div class="user-headline-data">
+                                            	<div class="name">{{MembersInfo.Adi}} {{MembersInfo.Soyadi}}</div>
+                                            	<div class="mail">{{MembersInfo.Email}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <ul class="listview  radius8 shadow viewMenu" ng-show="viewMenu">
+                                    <li class="list-first-child" ng-click="showMemberDetailPage()">
+                                        <a class="list-btn  icon-carat-r">Üyelik Bilgilerim</a>
+                                    </li>
+                                    <li ng-click="showMemberInfo($event,$index,memberinfo)">
+                                        <a class="list-btn  icon-carat-r">Spor Programım</a>
+                                    </li>
+                                    <li ng-click="showMemberInfo($event,$index,memberinfo)">
+                                        <a class="list-btn  icon-carat-r">Spor Programı Detaylı</a>
+                                    </li>
+                                    <li ng-click="showMemberInfo($event,$index,memberinfo)">
+                                        <a class="list-btn  icon-carat-r">Cardio Programı</a>
+                                    </li>
+                                    <li ng-click="showMemberInfo($event,$index,memberinfo)">
+                                        <a class="list-btn  icon-carat-r">Ölçümlerim</a>
+                                    </li>
+                                </ul>
+									
+                                <div class="viewMemberDetail" ng-show="viewMemberDetail">
+                                    <div class="shadow"><a class="list-btn btn-back radius8" ng-click="showMemberPage()">Listeye Geri Dön</a></div>
+                                    <ul class="listview  radius8 shadow" >
+                                        <li class="list-first-child" >
+                                            <span class="list-btn">Sozlesme Tarihi : {{MemberDetail.SozlesmeTarihi}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="list-btn">Baslangic Tarihi : {{MemberDetail.BaslangicTarihi}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="list-btn">Bitis Tarihi : {{MemberDetail.BitisTarihi}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="list-btn">Uyelik Tipi : {{MemberDetail.UyelikTipi}}</span>
+                                        </li>
+                                        <li class="list-last-child" >
+                                            <span class="list-btn">Uyelik Grubu : {{MemberDetail.UyelikGrubu}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                    			
+
+                    		
                     	</div>
                     </div>
                 </div>

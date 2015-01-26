@@ -28,6 +28,19 @@ a.button_11, a.button_12{color:#FFFFFF;}
 
 
 /* ------------------------- UI -------------------*/
+.member-info-panel .top-frame  {
+	background:#142ea9 url(images/user-info-bg.jpg) repeat-x top left;
+	-webkit-border-top-left-radius:8px;-border-top-left-radius-radius:8px;border-top-left-radius:8px;
+	-webkit-border-top-right-radius:8px;-border-top-right-radius-radius:8px;border-top-right-radius:8px;
+}
+.member-info-panel .top-frame .deleteinfo {
+	background: url(images/delete.png) center center no-repeat;
+}
+
+.member-info-panel .top-frame .refreshinfo {
+	background: url(images/refresh.png) center center no-repeat;
+}
+
 .input-wrapper {
 	color:#333;
 	background-color: #fff;

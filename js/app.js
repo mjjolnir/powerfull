@@ -37,7 +37,7 @@ setTimeout(function() {
 	      //üyelik alanı sorgusu
 	      if (swiperParent.activeIndex == 3) {
 	    	  var ctrl = angular.element(document.getElementById('memberController')).scope();
-	    	  ctrl.login();
+	    	  ctrl.initPage();
 	      }
 	    }
 	});

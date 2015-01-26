@@ -61,7 +61,7 @@
 	    });
 	    
 	    $scope.toggleDays = function(index) {
-	        $scope.toglleDaysBlocks(true);
+	        $scope.toggleDaysBlocks(true);
 	        $scope.current = $scope.data[index];
 	        $scope.daysData = $scope.current.data;
 	        
@@ -69,7 +69,7 @@
 	    };
 	    
 	    $scope.getDayData = function(index) {
-	        $scope.toglleDaysBlocks(false);
+	        $scope.toggleDaysBlocks(false);
 	        $scope.currentDayData = $scope.current.data[index];
 	        $scope.details = $scope.currentDayData.data;
 	    }
@@ -81,76 +81,221 @@
 	});
 
 	powerfullApp.controller("memberController", function($scope, $http, $templateCache) {
-
-		$scope.login = function() {
-			var store = window.localStorage;
-			var memberID = null;
-			if(store) {
-				var memberID = store.getItem("memberID");
-				if (memberID) {
-					$scope.requestUserInfo();
-				} else {
-					var id = prompt("Lütfen üye numaranızı giriniz?", "üye no");
-					if (!$scope.isEmpty(id) && $scope.isNumber(id)) {
-						store.setItem("memberID", id);
-						$scope.requestUserInfo();
-					}
-					return false;
+		//window.localStorage.clear();
+		
+		$scope.isBusy = false;
+		$scope.viewUserInfo = true;
+		$scope.viewMenu = true;
+		$scope.viewMemberDetail = false;
+		
+		$scope.initPage = function() {
+			var id = $scope.getMemberID();
+			if (id) {
+				$scope.loadMembersInfo(id);
+			} else  {
+				id = $scope.login();
+				if (id) {
+					$scope.loadMembersInfo(id);
 				}
 			}
-		}
+		};
 		
 		$scope.getMemberID = function() {
 			var store = window.localStorage;
 			var memberID = store.getItem("memberID");
 			 if (memberID) {
 				 return memberID;
-			 } else {
-				 $scope.login();
 			 }
+			 return false;
+		};
+		
+		$scope.login = function() {
+			var id = prompt("Lütfen telefon numaranızı giriniz?", "5xxyyyzzvv");
+			if (!$scope.isEmpty(id) && $scope.isNumber(id)) {
+				return id;
+			} else {
+				if ($scope.isEmpty(id)) {
+					$scope.showError("Telefon Numarası Belirtilmedi?");	
+				} else if(!$scope.isNumber(id)) {
+					$scope.showError("Bu Alan Sadece Rakam Olmalıdır.");
+				}
+			}
+			return false;
+		};
+		
+		$scope.loadMembersInfo = function(id) {
+			var store = window.localStorage;
+			var infoData = JSON.parse(store.getItem("MembersInfo"));
+
+			if ($scope.isEmpty(infoData)) {
+				if (id) {
+					$scope.setBusy(true);
+					$http({
+						method: 'JSONP', 
+						url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MembersInfo&id='+id, 
+						cache: $templateCache
+					}).success(function(data, status) {
+						console.log("loadMembersInfo",data);
+						   if (data.UyeID !== 0) {
+							   store.setItem("MembersInfo", JSON.stringify(data));
+							   store.setItem("memberID",data.UyeID);
+							   $scope.MembersInfo = data;
+							   $scope.loadMemberDetail(data.UyeID);
+							   //$scope.showMemberPage();
+							} else {
+								$scope.showError(data.Adi);
+							}
+						  //$scope.setBusy(false);
+					  }).error(function(data, status) {
+						  //$scope.setBusy(false);
+					});
+					 
+				}
+			} else {
+				$scope.loadFromStore();
+				$scope.showMemberPage();
+			}
+		};
+		
+		$scope.loadFromStore = function() {
+			var store = window.localStorage;
+			$scope.MembersInfo = angular.fromJson(store.getItem("MembersInfo"));
+			$scope.MemberDetail = angular.fromJson(store.getItem("MemberDetail"));
+			//$scope.SportsProgram = JSON.parse(store.getItem("SportsProgram"));
+			//$scope.SportsProgramDetail = JSON.parse(store.getItem("SportsProgramDetail"));
+			//$scope.SportsProgramCardio = JSON.parse(store.getItem("SportsProgramCardio"));
+			//$scope.SportsProgramMeasurement = JSON.parse(store.getItem("SportsProgramMeasurement"));
+			//$scope.loadMemberDetail($scope.MembersInfo.UyeID);
 		}
+		
+		$scope.loadMemberDetail = function(code) {
+			var store = window.localStorage;
+			$http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MemberDetail&id='+code, 
+					cache: $templateCache
+				}).success(function(data, status) {
+					 console.log("loadMemberDetail",data);
+					   store.setItem("MemberDetail", JSON.stringify(data));
+					   $scope.MemberDetail = data;
+					   $scope.SportsProgram(code);
+				  }).error(function(data, status) {
+					  
+				});
+		};
+		
+		$scope.SportsProgram = function(code) {
+			var store = window.localStorage;
+			$http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgram&id='+code, 
+					cache: $templateCache
+				}).success(function(data, status) {
+					 console.log("SportsProgram",data);
+					   store.setItem("SportsProgram", JSON.stringify(data));
+					   $scope.SportsProgram = data;
+					   $scope.SportsProgramDetail(code);
+				  }).error(function(data, status) {
+					  
+				});
+		};
+		
+		$scope.SportsProgramDetail = function(code) {
+			var store = window.localStorage;
+			$http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramDetail&id='+code, 
+					cache: $templateCache
+				}).success(function(data, status) {
+					 console.log("SportsProgramDetail",data);
+					   store.setItem("SportsProgramDetail", JSON.stringify(data));
+					   $scope.SportsProgramDetail = data;
+					   $scope.SportsProgramCardio(code);
+					  
+				  }).error(function(data, status) {
+					  
+				});
+		};
+		
+		$scope.SportsProgramCardio = function(code) {
+			var store = window.localStorage;
+			$http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramCardio&id='+code, 
+					cache: $templateCache
+				}).success(function(data, status) {
+					console.log("SportsProgramCardio",data);
+					   store.setItem("SportsProgramCardio", JSON.stringify(data));
+					   $scope.SportsProgramCardio = data;
+					   $scope.SportsProgramMeasurement(code);
+				  }).error(function(data, status) {
+					  
+				});
+		};
+		
+		$scope.SportsProgramMeasurement = function(code) {
+			var store = window.localStorage;
+			$http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramMeasurement&id='+code, 
+					cache: $templateCache
+				}).success(function(data, status) {
+					   console.log("SportsProgramMeasurement",data);
+					   store.setItem("SportsProgramMeasurement", JSON.stringify(data));
+					   $scope.SportsProgramMeasurement = data;
+					   $scope.showMemberPage();
+					   $scope.setBusy(false);
+				  }).error(function(data, status) {
+					  
+				});
+		};
+		
+		
+		$scope.deleteAll = function() {
+			var del = confirm("Veriler Silinecek. Onaylıyormusunuz?");
+			if (del == true) {
+				$scope.isBusy = false;
+				$scope.viewUserInfo = false;
+				$scope.viewMenu = false;
+				$scope.viewMemberDetail = false;
+				window.localStorage.clear();
+				$scope.initPage();
+			}
+		};
+			
+		$scope.reloadAll = function() {
+			
+		};
+		
+		$scope.showError = function(msg) {
+			alert(msg);
+		};
 		
 		$scope.setBusy = function(bool) {
 			$scope.isBusy = bool;
-		}
+		};
 		
-		$scope.requestUserInfo = function() {
-			var id = $scope.getMemberID();
-			console.log(id);
-			if (id) {
-				
-				$http({
-			        method: 'JSONP', 
-			        url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MembersInfo&id='+id, 
-			        cache: $templateCache
-			    }).success(function(data, status) {
-			    	  $scope.memberinfo = data;
-			    	  
-			      }).error(function(data, status) {
-			        
-			    });
-				 
-			}
-		}
+		$scope.showMemberPage = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = true;
+			$scope.viewMemberDetail = false;
+			//$(".viewUserInfo").removeClass("ng-hide");
+			//$(".viewMenu").removeClass("ng-hide");
+		};
 		
-
+		$scope.showMemberDetailPage = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = false;
+			$scope.viewMemberDetail = true;
+		};
+		
 		$scope.isEmpty = function(val){
 		    return (val === undefined || val == null || val.length <= 0) ? true : false;
 		};
 		
 		$scope.isNumber = function(n)  {
 			return !isNaN(parseFloat(n)) && isFinite(n);
-		}
-		
-		$scope.registerMemeberId = function() {
-			
 		};
-		
-		$scope.loadMemeberInfo = function() {
-			
-		};
-		
-		$scope.get
 		
 	});
 	
