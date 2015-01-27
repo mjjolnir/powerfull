@@ -84,9 +84,10 @@
 		//window.localStorage.clear();
 		
 		$scope.isBusy = false;
-		$scope.viewUserInfo = true;
-		$scope.viewMenu = true;
+		$scope.viewUserInfo = false;
+		$scope.viewMenu = false;
 		$scope.viewMemberDetail = false;
+		$scope.viewSportsProgram = false;
 		
 		$scope.initPage = function() {
 			var id = $scope.getMemberID();
@@ -130,25 +131,79 @@
 			if ($scope.isEmpty(infoData)) {
 				if (id) {
 					$scope.setBusy(true);
-					$http({
+					var info = $http({
 						method: 'JSONP', 
 						url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MembersInfo&id='+id, 
 						cache: $templateCache
 					}).success(function(data, status) {
-						console.log("loadMembersInfo",data);
 						   if (data.UyeID !== 0) {
-							   store.setItem("MembersInfo", JSON.stringify(data));
+							   var code = data.UyeID;
+							   store.setItem("MembersInfo", angular.toJson(data));
 							   store.setItem("memberID",data.UyeID);
 							   $scope.MembersInfo = data;
-							   $scope.loadMemberDetail(data.UyeID);
-							   //$scope.showMemberPage();
+
+							   var details= $http({
+									method: 'JSONP', 
+									url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MemberDetail&id='+code
+							   });
+							   
+							   var program = $http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgram&id='+code
+				});
+							   var programdetail = $http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramDetail&id='+code
+				});
+								var cardio = $http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramCardio&id='+code
+				});
+								var measure = $http({
+					method: 'JSONP', 
+					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramMeasurement&id='+code
+				});
+							$injector = angular.injector(['ng']);
+							var q = $injector.get('$q');
+							
+							q.all([details,program,programdetail,cardio,measure]).then(function(data){
+								    var value = data[0].data;
+									store.setItem("MemberDetail", angular.toJson(value));
+							   		$scope.MemberDetail = value;
+									
+									value = data[1].data;
+									store.setItem("SportsProgram", angular.toJson(value));
+							   		$scope.SportsProgram = value;
+									
+									value = data[2].data;
+									store.setItem("SportsProgramDetail", angular.toJson(value));
+							   		$scope.SportsProgramDetail = value[0];
+									$scope.SportsProgramDetailList = value;
+									$scope.SportsProgramDetailID = 0;
+									
+									value = data[3].data;
+									store.setItem("SportsProgramCardio", angular.toJson(value));
+							   		$scope.SportsProgramCardio = value[0];
+									$scope.SportsProgramCardioList = value;
+									$scope.SportsProgramCardioID = 0;
+									
+									value = data[4].data;
+									store.setItem("SportsProgramMeasurement", angular.toJson(value));
+							   		$scope.SportsProgramMeasurement = value[0];
+									$scope.SportsProgramMeasurementList = value;
+									$scope.SportsProgramMeasurementID = 0;
+									
+									$scope.setBusy(false);
+									$scope.showMemberPage();
+							});
+							   
 							} else {
 								$scope.showError(data.Adi);
 							}
-						  //$scope.setBusy(false);
 					  }).error(function(data, status) {
-						  //$scope.setBusy(false);
+						  $scope.setBusy(false);
 					});
+					
 					 
 				}
 			} else {
@@ -161,100 +216,63 @@
 			var store = window.localStorage;
 			$scope.MembersInfo = angular.fromJson(store.getItem("MembersInfo"));
 			$scope.MemberDetail = angular.fromJson(store.getItem("MemberDetail"));
-			//$scope.SportsProgram = JSON.parse(store.getItem("SportsProgram"));
-			//$scope.SportsProgramDetail = JSON.parse(store.getItem("SportsProgramDetail"));
-			//$scope.SportsProgramCardio = JSON.parse(store.getItem("SportsProgramCardio"));
-			//$scope.SportsProgramMeasurement = JSON.parse(store.getItem("SportsProgramMeasurement"));
-			//$scope.loadMemberDetail($scope.MembersInfo.UyeID);
-		}
-		
-		$scope.loadMemberDetail = function(code) {
-			var store = window.localStorage;
-			$http({
-					method: 'JSONP', 
-					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=MemberDetail&id='+code, 
-					cache: $templateCache
-				}).success(function(data, status) {
-					 console.log("loadMemberDetail",data);
-					   store.setItem("MemberDetail", JSON.stringify(data));
-					   $scope.MemberDetail = data;
-					   $scope.SportsProgram(code);
-				  }).error(function(data, status) {
-					  
-				});
+			$scope.SportsProgram = angular.fromJson(store.getItem("SportsProgram"));
+			
+			$scope.SportsProgramDetailList = angular.fromJson(store.getItem("SportsProgramDetail"));
+			$scope.SportsProgramDetail = $scope.SportsProgramDetailList[0];
+			$scope.SportsProgramDetailID = 0;
+			
+			$scope.SportsProgramCardioList = angular.fromJson(store.getItem("SportsProgramCardio"));
+			$scope.SportsProgramCardio = $scope.SportsProgramCardioList[0];
+			$scope.SportsProgramCardioID = 0;
+			
+			$scope.SportsProgramMeasurementList = angular.fromJson(store.getItem("SportsProgramMeasurement"));
+			$scope.SportsProgramMeasurement = $scope.SportsProgramMeasurementList[0];
+			$scope.SportsProgramMeasurementID = 0;
+
+		};
+
+		$scope.SPDBackward = function() {
+			$scope.SportsProgramDetailID--;
+			if ($scope.SportsProgramDetailID < 0) $scope.SportsProgramDetailID = 0;
+			$scope.SportsProgramDetail = $scope.SportsProgramDetailList[$scope.SportsProgramDetailID];
 		};
 		
-		$scope.SportsProgram = function(code) {
-			var store = window.localStorage;
-			$http({
-					method: 'JSONP', 
-					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgram&id='+code, 
-					cache: $templateCache
-				}).success(function(data, status) {
-					 console.log("SportsProgram",data);
-					   store.setItem("SportsProgram", JSON.stringify(data));
-					   $scope.SportsProgram = data;
-					   $scope.SportsProgramDetail(code);
-				  }).error(function(data, status) {
-					  
-				});
+		$scope.SPDForward = function() {
+			$scope.SportsProgramDetailID++;
+			if ($scope.SportsProgramDetailID > $scope.SportsProgramDetailList.length - 1) $scope.SportsProgramDetailID = $scope.SportsProgramDetailList.length-1;
+			$scope.SportsProgramDetail = $scope.SportsProgramDetailList[$scope.SportsProgramDetailID];
 		};
 		
-		$scope.SportsProgramDetail = function(code) {
-			var store = window.localStorage;
-			$http({
-					method: 'JSONP', 
-					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramDetail&id='+code, 
-					cache: $templateCache
-				}).success(function(data, status) {
-					 console.log("SportsProgramDetail",data);
-					   store.setItem("SportsProgramDetail", JSON.stringify(data));
-					   $scope.SportsProgramDetail = data;
-					   $scope.SportsProgramCardio(code);
-					  
-				  }).error(function(data, status) {
-					  
-				});
+		$scope.SPCBackward = function() {
+			$scope.SportsProgramCardioID--;
+			if ($scope.SportsProgramCardioID < 0) $scope.SportsProgramCardioID = 0;
+			$scope.SportsProgramCardio = $scope.SportsProgramCardioList[$scope.SportsProgramCardioID];
 		};
 		
-		$scope.SportsProgramCardio = function(code) {
-			var store = window.localStorage;
-			$http({
-					method: 'JSONP', 
-					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramCardio&id='+code, 
-					cache: $templateCache
-				}).success(function(data, status) {
-					console.log("SportsProgramCardio",data);
-					   store.setItem("SportsProgramCardio", JSON.stringify(data));
-					   $scope.SportsProgramCardio = data;
-					   $scope.SportsProgramMeasurement(code);
-				  }).error(function(data, status) {
-					  
-				});
+		$scope.SPCForward = function() {
+			$scope.SportsProgramCardioID++;
+			if ($scope.SportsProgramCardioID > $scope.SportsProgramCardioList.length - 1) $scope.SportsProgramCardioID = $scope.SportsProgramCardioList.length-1;
+			$scope.SportsProgramCardio = $scope.SportsProgramCardioList[$scope.SportsProgramCardioID];
 		};
 		
-		$scope.SportsProgramMeasurement = function(code) {
-			var store = window.localStorage;
-			$http({
-					method: 'JSONP', 
-					url: 'http://powerfullclub.com/memberdata.php?callback=JSON_CALLBACK&func=SportsProgramMeasurement&id='+code, 
-					cache: $templateCache
-				}).success(function(data, status) {
-					   console.log("SportsProgramMeasurement",data);
-					   store.setItem("SportsProgramMeasurement", JSON.stringify(data));
-					   $scope.SportsProgramMeasurement = data;
-					   $scope.showMemberPage();
-					   $scope.setBusy(false);
-				  }).error(function(data, status) {
-					  
-				});
+		
+		$scope.SPMBackward = function() {
+			$scope.SportsProgramMeasurementID--;
+			if ($scope.SportsProgramMeasurementID < 0) $scope.SportsProgramMeasurementID = 0;
+			$scope.SportsProgramMeasurement = $scope.SportsProgramMeasurementList[$scope.SportsProgramMeasurementID];
+		};
+		
+		$scope.SPMForward = function() {
+			$scope.SportsProgramMeasurementID++;
+			if ($scope.SportsProgramMeasurementID > $scope.SportsProgramMeasurementList.length - 1) $scope.SportsProgramMeasurementID = $scope.SportsProgramMeasurementList.length-1;
+			$scope.SportsProgramMeasurement = $scope.SportsProgramMeasurementList[$scope.SportsProgramMeasurementID];
 		};
 		
 		
 		$scope.deleteAll = function() {
 			var del = confirm("Veriler Silinecek. Onaylıyormusunuz?");
 			if (del == true) {
-				$scope.isBusy = false;
 				$scope.viewUserInfo = false;
 				$scope.viewMenu = false;
 				$scope.viewMemberDetail = false;
@@ -264,7 +282,11 @@
 		};
 			
 		$scope.reloadAll = function() {
-			
+				$scope.viewUserInfo = false;
+				$scope.viewMenu = false;
+				$scope.viewMemberDetail = false;
+				window.localStorage.clear();
+				$scope.loadMembersInfo($scope.MembersInfo.CepTel);
 		};
 		
 		$scope.showError = function(msg) {
@@ -276,17 +298,67 @@
 		};
 		
 		$scope.showMemberPage = function() {
-			$scope.viewUserInfo = true;
-			$scope.viewMenu = true;
-			$scope.viewMemberDetail = false;
-			//$(".viewUserInfo").removeClass("ng-hide");
-			//$(".viewMenu").removeClass("ng-hide");
+			setTimeout(function () {
+				$scope.$apply(function () {
+					$scope.viewUserInfo = true;
+					$scope.viewMenu = true;
+					$scope.viewMemberDetail = false;
+					$scope.viewSportsProgram = false;
+					$scope.viewSportsProgramDetail = false;
+					$scope.viewSportsProgramCardio = false;
+					$scope.viewSportsProgramMeasurement = false;
+				});
+			}, 300);
 		};
 		
 		$scope.showMemberDetailPage = function() {
 			$scope.viewUserInfo = true;
 			$scope.viewMenu = false;
 			$scope.viewMemberDetail = true;
+			$scope.viewSportsProgram = false;
+			$scope.viewSportsProgramDetail = false;
+			$scope.viewSportsProgramCardio = false;
+			$scope.viewSportsProgramMeasurement = false;
+		};
+		
+		$scope.showSportsProgram = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = false;
+			$scope.viewMemberDetail = false;
+			$scope.viewSportsProgram = true;
+			$scope.viewSportsProgramDetail = false;
+			$scope.viewSportsProgramCardio = false;
+			$scope.viewSportsProgramMeasurement = false;
+		};
+		
+		$scope.showSportsProgramDetail = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = false;
+			$scope.viewMemberDetail = false;
+			$scope.viewSportsProgram = false;
+			$scope.viewSportsProgramDetail = true;
+			$scope.viewSportsProgramCardio = false;
+			$scope.viewSportsProgramMeasurement = false;
+		};
+		
+		$scope.showSportsProgramCardio = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = false;
+			$scope.viewMemberDetail = false;
+			$scope.viewSportsProgram = false;
+			$scope.viewSportsProgramDetail = false;
+			$scope.viewSportsProgramCardio = true;
+			$scope.viewSportsProgramMeasurement = false;
+		};
+		
+		$scope.showSportsProgramMeasurement = function() {
+			$scope.viewUserInfo = true;
+			$scope.viewMenu = false;
+			$scope.viewMemberDetail = false;
+			$scope.viewSportsProgram = false;
+			$scope.viewSportsProgramDetail = false;
+			$scope.viewSportsProgramCardio = false;
+			$scope.viewSportsProgramMeasurement = true;
 		};
 		
 		$scope.isEmpty = function(val){

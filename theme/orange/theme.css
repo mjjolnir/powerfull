@@ -71,6 +71,23 @@ a.button_11, a.button_12{color:#FFFFFF;}
 	cursor:pointer;
 }
 
+.btn-page-scrollback {
+	background:#c85a00 url(images/arrow-left.png) center center no-repeat;
+	color:#fff;
+	font-weight:700;
+	font-size:14px;
+	cursor:pointer;
+}
+
+.btn-page-scrollforward {
+	background:#c85a00 url(images/arrow-right.png) center center no-repeat;
+	color:#fff;
+	font-weight:700;
+	font-size:14px;
+	cursor:pointer;
+}
+
+
 /* Google web font
 /*------------------------------------------*/
 h1, h2, h3, h4, h5, h6, .logo, .image_caption, a.button_12, a.button_11, .trigger a, .trigger_blog a, .post_left, .post_right_unreveal, #loadMore, #showLess, a.backtoblog, .form label, .form_submit, a.call_button, a.map_button{font-family: 'Lato', sans-serif;}

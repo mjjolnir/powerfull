@@ -87,9 +87,23 @@ setTimeout(function() {
 			swipernested2.swipeTo(0);
 	});
 
-
-
-
+	
+	var swipernested3 = $('.swiper-nested3').swiper({
+	        mode:'vertical',
+	        slidesPerViewFit:false,
+	        freeMode: true,
+	        freeModeFluid:true,
+	        slidesPerView: 'auto'
+	});
+	$(".swiper-nested3 .list-btn").click(function(){
+			setTimeout(function(){
+				swipernested3.reInit();
+			},1000);
+	});
+	$('.swiper-nested3 .scrolltop').click(function() {					  
+			swipernested3.swipeTo(0);
+	});
+	
 	var swipernested5 = $('.swiper-nested5').swiper({
 	        mode:'vertical',
 	        slidesPerViewFit:false,

@@ -310,6 +310,27 @@ h2.page_title{ font-size:30px;padding:0 0 20px 0;}
 	text-align:center;
 }
 
+.btn-page-scroll {
+	position:relative;
+	overflow:hidden;
+}
+.btn-page-scrollback {
+	height:100%;
+	width:50px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.btn-page-scrollforward {
+	height:100%;
+	width:50px;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+
+
 .icon-carat-r:after {
 	content: "";
     display: block;
