@@ -34,6 +34,47 @@
      /*   background: url(images/bg/appbg-480x800.jpg) no-repeat top center;background-attachment:fixed; */
         
     }
+    .user-headline-wrapper{
+   width: 100%;
+   margin: 0 auto;
+}
+
+.user-headline-wrapper .user-headline-wrapright{
+   float: left;
+   width: 100%;
+}
+.user-headline-wrapper .user-headline-wrapright .user-headline-right{
+   margin-left: 110px;
+   height: 90px;
+}
+.user-headline-wrapper .user-headline-left{
+   float: left;
+   width: 90px;
+   margin-left: -100%;
+   height: 90px;
+}
+
+.member-info-panel .member-info-img {
+	width:100px;
+	height:100px;
+	border:3px solid #fff;
+  margin-top:-50px;
+  float:left;
+  z-index:999;
+}
+
+.member-info-panel .user-headline-data {
+    float:left;
+}
+.member-info-panel .user-headline-data .name {
+    font-size:14px;
+    font-weight: 700;
+}
+.member-info-panel .user-headline-data .mail {
+    color:#c5c5c5;
+    font-size: 11px;
+}
+    
 }
 
 /* Smartphones (portrait) ----------- */

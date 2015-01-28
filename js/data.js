@@ -46,7 +46,9 @@
 	        $scope.current = $scope.data[0];
 	        $scope.daysData = $scope.current.data;
 	        $scope.currentDayData = $scope.current.data[0];
+			$scope.currentLocation = $scope.current.title;
 	        $scope.details = $scope.currentDayData.data;
+			
 	        $scope.toggleDaysBlocks(true);
 	       
 	        var defer = setTimeout(function(){
@@ -64,7 +66,7 @@
 	        $scope.toggleDaysBlocks(true);
 	        $scope.current = $scope.data[index];
 	        $scope.daysData = $scope.current.data;
-	        
+	        $scope.currentLocation = $scope.data[index].title;
 	         $(".trigger_blog").toggleClass("activeb").next().slideToggle("slow");
 	    };
 	    
@@ -111,7 +113,7 @@
 		};
 		
 		$scope.login = function() {
-			var id = prompt("Lütfen telefon numaranızı giriniz?", "5xxyyyzzvv");
+			var id = prompt("Lütfen telefon numaranızı giriniz?", "5xx1112233");
 			if (!$scope.isEmpty(id) && $scope.isNumber(id)) {
 				return id;
 			} else {
@@ -307,6 +309,7 @@
 					$scope.viewSportsProgramDetail = false;
 					$scope.viewSportsProgramCardio = false;
 					$scope.viewSportsProgramMeasurement = false;
+					swipernested3.reInit();
 				});
 			}, 300);
 		};
@@ -369,6 +372,124 @@
 			return !isNaN(parseFloat(n)) && isFinite(n);
 		};
 		
+	});
+
+	powerfullApp.controller('galleryController',function($scope, $http, $timeout) {
+	    $scope.fetch = function() {
+			var data = [{
+				image:"images/activity/1/1.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/2.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/3.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/5.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/6.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/7.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/8.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/9.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/11.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/12.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/13.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/15.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/17.JPG",
+				group:"Yılbaşı"
+			},{
+				image:"images/activity/1/20.JPG",
+				group:"Yılbaşı"
+			},
+			
+			{
+				image:"images/activity/3/masa-tenisi-1.jpg",
+				group:"Masa Tenisi"
+			},{
+				image:"images/activity/3/masa-tenisi-2.jpg",
+				group:"Masa Tenisi"
+			},{
+				image:"images/activity/3/masa-tenisi-3.jpg",
+				group:"Masa Tenisi"
+			},{
+				image:"images/activity/3/masa-tenisi-4.jpg",
+				group:"Masa Tenisi"
+			},{
+				image:"images/activity/3/masa-tenisi-5.jpg",
+				group:"Masa Tenisi"
+			},
+			
+			{
+				image:"images/activity/4/pes2012.jpg",
+				group:"PES Turnuvası"
+			},{
+				image:"images/activity/4/pes2012-1.jpg",
+				group:"PES Turnuvası"
+			},{
+				image:"images/activity/4/pes2012-2.jpg",
+				group:"PES Turnuvası"
+			},{
+				image:"images/activity/4/pes2012-3.jpg",
+				group:"PES Turnuvası"
+			},{
+				image:"images/activity/4/pes2012-4.jpg",
+				group:"PES Turnuvası"
+			}];
+			
+			$timeout(function () { $scope.assignmentsLoaded(data); }, 1000);
+		}
+		
+		$scope.assignmentsLoaded = function (data, status) {
+        	$scope.data = data;
+			$scope.initPhotos();
+    	}
+		
+		
+		$scope.initPhotos = function() {
+					var $grid = $( '#tp-grid' ),
+					$name = $( '#name' ),
+					$close = $( '#close' ),
+					$loader = $( '<div class="loader"><span>yükleniyor...</span></div>' ).insertBefore( $grid ),
+					stapel = $grid.stapel({
+						delay : 50,
+						gutter : 6,
+						onLoad : function() {
+							$loader.remove();
+						},
+						onBeforeOpen : function( pileName ) {
+							$name.html( pileName );
+							
+						},
+						onAfterOpen : function( pileName ) {
+							$('.gallery-wrapper .topbar-wrapper').show();
+						},
+						onAfterClose: function(pileName) { 
+							$('.gallery-wrapper .topbar-wrapper').hide();
+						}
+					} );
+		}
+	    
+		$scope.fetch();
+		
+	   
 	});
 	
 	

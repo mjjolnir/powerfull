@@ -173,7 +173,9 @@ ul.photo_gallery_13_round li{border:1px #e5e5e5 solid;}
 /*--------- calendar style ----------------*/
 ul.cdays li.day {background-color: #164a56; color:#fff;}
 ul.cdays li.day a {color:#fff; width: 100%; display: block;}
-
+.calendar-detail {
+	background-color: #164a56; color:#fff;
+}
 
 /* -------- akademi style --------------------------*/
 .akademi_container {

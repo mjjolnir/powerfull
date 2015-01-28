@@ -191,27 +191,27 @@
                 <div class="swiper-wrapper" ng-controller="calendarController">
                         <div class="swiper-slide">  
                             <div class="toogle_wrap_blog radius8">
-                                <div class="trigger_blog"><a href="#">Lokasyonlar</a></div>
+                                <div class="trigger_blog"><a href="#">{{currentLocation}}</a></div>
                                     <div class="toggle_container_blog">
                                         <ul class="listing_detailed">
-                                            <li ng-repeat="location in data" ng-click="toggleDays($index)"><a href="#">{{location.title}}</a></li>
+                                            <li class=" radius4" ng-repeat="location in data" ng-click="toggleDays($index)"><span class="tag">{{location.title}}</span></li>
                                         </ul>
                                     </div>
                             </div>
                         </div>
                         <div class="swiper-slide"> 
-                            <ul class="cdays" ng-show="showDayList">
-                                <li class="day radius8" ng-repeat="days in daysData"><h4><a href="#"  ng-click="getDayData($index)">{{days.title}}</a></h4></li>
+                            <ul class="listview  radius8 shadow" ng-show="showDayList">
+                                <li ng-class="{'list-first-child' : $index==0,'list-last-child' : $index==groups.length-1}" class="list-btn  icon-carat-r" ng-repeat="days in daysData" ng-click="getDayData($index)"><span  >{{days.title}}</span></li>
                             </ul>
-                        </div>
-                        <div class="swiper-slide"> 
-                            <ul class="cdays" ng-show="showDayDetail">
-                                <li class="day" ng-repeat="detail in details"><h5>{{detail}}</h5></li>
+                            
+                            <div ng-show="showDayDetail">
+                            <div class="shadow radius8"><a ng-click="toggleDaysBlocks(true)" class="list-btn btn-back radius8">Haftanın Günleri</a></div>
+                            <ul class="listview  radius8 shadow" >
+                                <li ng-class="{'list-first-child' : $index==0,'ui-last-child' : $index==groups.length-1}" class="list-btn calendar-detail " ng-repeat="detail in details">{{detail}}</li>
                             </ul>
-                        </div>
-                        <div class="swiper-slide">
                             <div class="clearfix"></div>
                             <div class="scrolltop radius20"><a href="#" class="scrolltop1"><img src="images/icons/top.png" alt="Sayfa Başı" title="Sayfa Başı" /></a></div>
+                            </div>
                         </div>
                   </div>
             </div>
@@ -236,10 +236,18 @@
                                             <div class="member-id">Üye Kayıt No : {{MembersInfo.OzelKod}}</div>
                                         </div>
                                         <div class="user-headline">
-                                        	<img ng-src="data:image/jpeg;base64,{{MembersInfo.Resim}}" class="member-info-img radius200" />
-                                            <div class="user-headline-data">
-                                            	<div class="name">{{MembersInfo.Adi}} {{MembersInfo.Soyadi}}</div>
-                                            	<div class="mail">{{MembersInfo.Email}}</div>
+                                        	<div class="user-headline-wrapper">
+                                                <div class="user-headline-wrapright">
+                                                    <div class="user-headline-right">
+                                                        <div class="user-headline-data">
+                                                            <div class="name">{{MembersInfo.Adi}} {{MembersInfo.Soyadi}}</div>
+                                                            <div class="mail">{{MembersInfo.Email}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="user-headline-left">
+                                                    <img ng-src="data:image/jpeg;base64,{{MembersInfo.Resim}}" class="member-info-img radius200" />
+                                                </div> 
                                             </div>
                                         </div>
                                     </div>
@@ -265,6 +273,7 @@
 									
                                 <div class="viewMemberDetail" ng-show="viewMemberDetail">
                                     <div class="shadow radius8"><a class="list-btn btn-back radius8" ng-click="showMemberPage()">Ana Menüye Dön</a></div>
+                                    <div class="clearfix"></div>
                                     <ul class="listview  radius8 shadow" >
                                         <li class="list-first-child" >
                                             <span class="list-btn">Sozlesme Tarihi : {{MemberDetail.SozlesmeTarihi}}</span>
@@ -286,6 +295,7 @@
                     			
                                 <div ng-show="viewSportsProgram">
                                     <div class="shadow radius8"><a class="list-btn btn-back radius8" ng-click="showMemberPage()">Ana Menüye Dön</a></div>
+                                    <div class="clearfix"></div>
                                     <ul class="listview  radius8 shadow" >
                                         <li class="list-first-child" >
                                             <span class="list-btn">Baslangic Tarihi : {{SportsProgram.BaslangicTarihi}}</span>
@@ -338,6 +348,7 @@
                                         <div class="btn-page-scrollback" ng-click="SPDBackward()"></div>
                                         <div class="btn-page-scrollforward" ng-click="SPDForward()"></div>
                                     </div>
+                                    <div class="clearfix"></div>
                                     <ul class="listview  radius8 shadow" >
                                         <li class="list-first-child" >
                                             <span class="list-btn">Sira No : {{SportsProgramDetail.SiraNo}}</span>
@@ -381,6 +392,7 @@
                                         <div class="btn-page-scrollback" ng-click="SPCBackward()"></div>
                                         <div class="btn-page-scrollforward" ng-click="SPCForward()"></div>
                                     </div>
+                                    <div class="clearfix"></div>
                                     <ul class="listview  radius8 shadow" >
                                         <li class="list-first-child" >
                                             <span class="list-btn">Sira No : {{SportsProgramCardio.SiraNo}}</span>
@@ -421,6 +433,7 @@
         <div class="btn-page-scrollback" ng-click="SPMBackward()"></div>
         <div class="btn-page-scrollforward" ng-click="SPMForward()"></div>
     </div>
+    
     <ul class="listview  radius8 shadow" >
         <li class="list-first-child" > <span class="list-btn">ID : {{SportsProgramMeasurement.ID}}</span> </li>
         <li ><span class="list-btn">DEVICE ID : {{SportsProgramMeasurement.DEVICE_ID}}</span></li>
@@ -634,39 +647,79 @@
      </div>
  <!--Page 4 content-->    
       <div class="swiper-slide sliderbg"  data-title="Etkinlikler">
-        <div class="swiper-container swiper-nested" data-title="Sosyal Etkinlikler">
+        <div class="swiper-container swiper-nested">
           <div class="pages_container">
+          	   <div class="swiper-container swiper-nested4 vertical-container">
+               <div class="swiper-wrapper">
+               <div class="swiper-slide">  
                 <div class="gallery-wrapper">
                 
-					<div class="topbar-wrapper">
+					<!-- <div class="topbar-wrapper">
 					    <div class="wrap-title">
-					        <div class="title">
-					            <h3 id="name"></h3>
-					        </div>
+					        <div class="title"><h3 id="name"></h3></div>
 					    </div>
-					    <div id="close" class="back-btn">
-					           
-					    </div> 
-					</div>
+					    <div id="close" class="back-btn"></div> 
+					</div> -->
+                    
+                     <div id="close" class="btn-page-scroll shadow radius8" style="margin-bottom:10px;">
+                        <a class="list-btn btn-back radius8" id="name"></a>
+                        <div class="btn-page-scrollback" ></div>
+                     </div>
 					<div class="clearfix"></div>
 					
-					<ul id="tp-grid" class="tp-grid">
-						<!-- Bryan Moats -->
-						<li data-pile="Bryan Moats"> <img src="images/1/1.jpg" class="swipebox" /> </li>
-						<li data-pile="Bryan Moats"> <img src="images/1/2.jpg" /> </li>
-						<li data-pile="Bryan Moats"> <img src="images/1/3.jpg" /> </li>
-						
-						<!-- deneme 2 -->
-						<li data-pile="deneme 2"> <img src="images/2/1.jpg" /> </li>
-						<li data-pile="deneme 2"> <img src="images/2/2.jpg" /> </li>
-						<li data-pile="deneme 2"> <img src="images/2/3.jpg" /> </li>
-						
-						<!-- deneme 3 -->
-						<li data-pile="deneme 3"> <img src="images/3/1.jpg" /> </li>
-						<li data-pile="deneme 3"> <img src="images/3/2.jpg" /> </li>
-						<li data-pile="deneme 3"> <img src="images/3/3.jpg" /> </li>
+					<ul class="tp-grid" id="tp-grid" style="min-width: 6px; margin-left: 0px; height: 0px;">
+						<li  data-pile="Yılbaşı">
+                              <a href="images/activity/1/1.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/1.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/2.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/2.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/5.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/5.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/6.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/6.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/7.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/7.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/8.JPG"  class="swipebox" rel="g1"><img alt=""  src="images/activity/1/8.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/9.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/9.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/11.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/11.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/12.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/12.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/13.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/13.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/15.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/15.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/17.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/17.JPG"></a>
+                        </li><li  data-pile="Yılbaşı" >
+                              <a href="images/activity/1/20.JPG"  class="swipebox" rel="g1"><img alt="" src="images/activity/1/20.JPG"></a>
+                        </li><li  data-pile="Masa Tenisi" >
+                              <a href="images/activity/3/masa-tenisi-1.jpg"  class="swipebox" rel="g2"><img alt="" src="images/activity/3/masa-tenisi-1.jpg"></a>
+                        </li><li  data-pile="Masa Tenisi" >
+                              <a href="images/activity/3/masa-tenisi-2.jpg"  class="swipebox" rel="g2"><img alt="" src="images/activity/3/masa-tenisi-2.jpg"></a>
+                        </li><li  data-pile="Masa Tenisi" >
+                              <a href="images/activity/3/masa-tenisi-3.jpg"  class="swipebox" rel="g2"><img alt="" src="images/activity/3/masa-tenisi-3.jpg"></a>
+                        </li><li  data-pile="Masa Tenisi" >
+                              <a href="images/activity/3/masa-tenisi-4.jpg"  class="swipebox" rel="g2"><img alt="" src="images/activity/3/masa-tenisi-4.jpg"></a>
+                        </li><li  data-pile="Masa Tenisi" >
+                              <a href="images/activity/3/masa-tenisi-5.jpg"  class="swipebox" rel="g2"><img alt="" src="images/activity/3/masa-tenisi-5.jpg"></a>
+                        </li><li  data-pile="PES Turnuvası" >
+                              <a href="images/activity/4/pes2012.jpg"  class="swipebox" rel="g3"><img alt="" src="images/activity/4/pes2012.jpg"></a>
+                        </li><li  data-pile="PES Turnuvası" >
+                              <a href="images/activity/4/pes2012-1.jpg"  class="swipebox" rel="g3"><img alt="" src="images/activity/4/pes2012-1.jpg"></a>
+                        </li><li  data-pile="PES Turnuvası" >
+                              <a href="images/activity/4/pes2012-2.jpg"  class="swipebox" rel="g3"><img alt="" src="images/activity/4/pes2012-2.jpg"></a>
+                        </li><li  data-pile="PES Turnuvası" >
+                              <a href="images/activity/4/pes2012-3.jpg"  class="swipebox" rel="g3"><img alt="" src="images/activity/4/pes2012-3.jpg"></a>
+                        </li><li  data-pile="PES Turnuvası" >
+                              <a href="images/activity/4/pes2012-4.jpg"  class="swipebox" rel="g3"><img alt="" src="images/activity/4/pes2012-4.jpg"></a>
+                        </li>
 					</ul>
 				</div>
+                </div>
+                </div>
+              </div>
           </div>
         </div>                            
       </div>
@@ -718,13 +771,17 @@
      </div>
 <!--Page 7 content-->
       <div class="swiper-slide sliderbg" data-title="Personal Training">
-      <div class="swiper-container swiper-nested">
+      <div class="pages_container">
+      <div class="swiper-container swiper-nested7 vertical-container">
                <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                              <div class="slide-inner">
-                                        <div class="pages_container">
-                                            <h1>PERSONAL TRAINING</h1>
-                                        </div>
+
+                                                    <h2 class="post_title">DEMO CONTENT</h2>
+                                                    <div class="image_single radius4"><img src="images/personel-training.jpg" alt="" title="" border="0"></div>
+                                                    <div class="image_caption darkblue green_borderbottom radius4">Image title</div>
+                                                    <h3>Imagination is our power</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in tempus volutpat, posuere ullamcorper augue. Proin dignissim risus ut quam aliquam dignissim. In erat elit, bibendum vitae commodo vitae, bibendum non justo.<br><br> Nunc erat eros, cursus et commodo vitae, pulvinar ac libero. Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta.</p>
+ 
                                         <!--End of page container-->
                               </div>
                     </div>
@@ -733,15 +790,18 @@
      </div>
 <!--Page 8 content-->
       <div class="swiper-slide sliderbg" data-title="Wellness">
-      <div class="swiper-container swiper-nested">
+      <div class="pages_container">
+      <div class="swiper-container swiper-nested8 vertical-container">
                <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                              <div class="slide-inner">
-                                 <div class="pages_container">
-                                 	<h1>Wellness</h1>
-                                 </div>
-                                 <!--End of page container-->
-                              </div>
+
+                                                    <h2 class="post_title">WELLNESS CONTENT</h2>
+                                                    <div class="image_single radius4"><img src="images/wellness.jpg" alt="" title="" border="0"></div>
+                                                    <h3>Wellnessin Faydaları</h3>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in tempus volutpat, posuere ullamcorper augue. Proin dignissim risus ut quam aliquam dignissim. In erat elit, bibendum vitae commodo vitae, bibendum non justo.<br><br> Nunc erat eros, cursus et commodo vitae, pulvinar ac libero. Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta.</p>
+ 
+                                        <!--End of page container-->
+                       </div>
                     </div>
               </div>
      </div>
@@ -801,7 +861,7 @@
      </div>
      
 <!--Page 11 content-->
-      <div class="swiper-slide sliderbg" data-title="Facebook">
+      <!-- <div class="swiper-slide sliderbg" data-title="Facebook">
         <div class="pages_container">
             <div class="swiper-container swiper-nested11 vertical-container">
                 <div class="swiper-wrapper">
@@ -812,7 +872,7 @@
             </div>
             
         </div>
-     </div>
+     </div> -->
  
 <!--Page 12 content-->
       <div class="swiper-slide sliderbg" data-title="İletişim">
@@ -898,39 +958,36 @@
 
 	<script src="js/app.js"></script>
 	<script src="js/data.js" charset="UTF-8"></script>
-	
-	<script type="text/javascript">	
-			$(function() {
-
-				var $grid = $( '#tp-grid' ),
+	<script language="javascript">
+		var $grid = $( '#tp-grid' ),
 					$name = $( '#name' ),
 					$close = $( '#close' ),
 					$loader = $( '<div class="loader"><span>yükleniyor...</span></div>' ).insertBefore( $grid ),
-					stapel = $grid.stapel( {
+					stapel = $grid.stapel({
 						delay : 50,
 						gutter : 6,
 						onLoad : function() {
 							$loader.remove();
+							$close.hide();
+							$(".swipebox").swipebox();
 						},
 						onBeforeOpen : function( pileName ) {
 							$name.html( pileName );
-							
+							$close.show();
 						},
 						onAfterOpen : function( pileName ) {
-							$('.gallery-wrapper .topbar-wrapper').slideDown();
+							swipernested4.reInit();
 						},
-						onAfterClose: function(pileName) { 
-							$('.gallery-wrapper .topbar-wrapper').slideUp();
+						onAfterClose: function(pileName) {
+							swipernested4.reInit();
 						}
 					} );
-
-				$close.on( 'click', function() {
-					$name.empty();
-					stapel.closePile();
 					
-				} );
-
-			} );
-		</script>
+					$close.on( 'click', function() {
+						$close.hide();
+						$name.empty();
+						stapel.closePile();
+					} );
+	</script>
 </body>
 </html>

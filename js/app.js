@@ -17,9 +17,9 @@ setTimeout(function() {
 }, 6000);
 
 
- $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
+ /* $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
         e.stopPropagation();
- });
+ }); */
 
 	
 	var swiperParent = new Swiper('.swiper-parent',{
@@ -104,6 +104,15 @@ setTimeout(function() {
 			swipernested3.swipeTo(0);
 	});
 	
+	var swipernested4 = $('.swiper-nested4').swiper({
+	        mode:'vertical',
+	        slidesPerViewFit:false,
+	        freeMode: true,
+	        freeModeFluid:true,
+	        slidesPerView: 'auto'
+	});
+
+
 	var swipernested5 = $('.swiper-nested5').swiper({
 	        mode:'vertical',
 	        slidesPerViewFit:false,
@@ -135,7 +144,33 @@ setTimeout(function() {
 	$('.swiper-nested6 .scrolltop').click(function() {					  
 			swipernested6.swipeTo(0);
 	});
+	
+	var swipernested7 = $('.swiper-nested7').swiper({
+	        mode:'vertical',
+	        slidesPerViewFit:false,
+	        freeMode: true,
+	        freeModeFluid:true,
+	        slidesPerView: 'auto'
+	});
 
+
+	$('.swiper-nested7 .scrolltop').click(function() {					  
+			swipernested7.swipeTo(0);
+	});
+	
+	var swipernested8 = $('.swiper-nested8').swiper({
+	        mode:'vertical',
+	        slidesPerViewFit:false,
+	        freeMode: true,
+	        freeModeFluid:true,
+	        slidesPerView: 'auto'
+	});
+
+
+	$('.swiper-nested8 .scrolltop').click(function() {					  
+			swipernested8.swipeTo(0);
+	});
+	
 	var swipernested9 = $('.swiper-nested9').swiper({
 	        mode:'vertical',
 	        slidesPerViewFit:false,
@@ -185,14 +220,15 @@ setTimeout(function() {
 	});
 	
 	$('#footer-menu .btn-facebook').click(function(){
-		swiperParent.swipeTo(11);
+		//swiperParent.swipeTo(11);
+		var ref = window.open('http://touch.facebook.com/powerfullclub', '_blank', 'location=no');
 	});
 	
 	$('#footer-menu .btn-contact').click(function(){
-		swiperParent.swipeTo(12);
+		swiperParent.swipeTo(11);
 	});
 	
-	$(".swipebox").swipebox();
+	
     
     $('.gohome').click(function(){
     	swiperParent.swipeTo(0);
@@ -212,4 +248,3 @@ setTimeout(function() {
         $(this).toggleClass("activep").next().slideToggle("slow");
         return false;
     });
-
