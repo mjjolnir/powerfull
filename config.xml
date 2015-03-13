@@ -1,77 +1,35 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jokermedya.powerfull" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.jokermedya.powerfull"
+        versionCode = "10" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
     <name>Powerfull Club</name>
+
     <description>
-        Powerfullclub uygulaması ile klübe üyeolan üyelerimizin mobile hizmetler üzerinden gelişimlerini izlemelerini ve bu uygulamayı kullanan üyelerimiz arasında klüp üyelerimize özel paylaşımlar sağlanmaktadır.
+        Powerfull Club App
     </description>
-    
-    <author email="info@jokermedya.com" href="http://www.jokermedya.com">
-        JokerMedya Dev Team
+
+    <author href="http://jokermedya.com" email="support@jokermedya.com">
+        Jokermedya Dev Team 
     </author>
+
+    <access origin="*" />
     
-    <content src="index.html" />
     
-    < access origin="*" browserOnly="true"/>
-    
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
     <preference name="iosExtraFilesystems" value="library,library-nosync,documents,documents-nosync,cache,bundle,root" />
-    <preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,root" />
+	<preference name="AndroidExtraFilesystems" value="files,files-external,documents,sdcard,cache,cache-external,root" />
+	
+    <gap:splash src="splash.png" />
     
-    <platform name="ios">
-        <icon src="res/ios/icon/icon.png"  width="57" height="57" />
-        <icon src="res/ios/icon/icon-60.png"  width="60" height="60" />
-        <icon src="res/ios/icon/icon-60@2x.png"  width="120" height="120" />
-        <icon src="res/ios/icon/icon@2x.png"  width="114" height="114" />
-
-        <!-- iPad -->
-        <icon src="res/ios/icon/icon-72.png"  width="72" height="72" />
-        <icon src="res/ios/icon/icon-72@2x.png"  width="144" height="144" />
-        <icon src="res/ios/icon/icon-76.png"  width="76" height="76" />
-        <icon src="res/ios/icon/icon-76@2x.png"  width="152" height="152" />
-        
-        <!-- Settings Icon -->
-        <icon src="res/ios/icon/icon-small.png"  width="29" height="29" />
-        <icon src="res/ios/icon/icon-small@2x.png"  width="58" height="58" />
-        <icon src="res/ios/icon/icon-50.png"  width="50" height="50" />
-        <icon src="res/ios/icon/icon-50@2x.png"  width="100" height="100" />
-        
-        <!-- Spotlight Icon -->
-        <icon src="res/ios/icon/icon-40.png"  width="40" height="40" />
-        <icon src="res/ios/icon/icon-40@2x.png"  width="80" height="80" />
-        
-        
-        <!-- Define app splash screen for each platform. -->
-        <!-- iPhone and iPod touch -->
-        <gap:splash src="res/ios/splash/Default.png"  width="320" height="480" />
-        <gap:splash src="res/ios/splash/Default@2x.png"  width="640" height="960" />
-        
-        <!-- iPhone 5 / iPod Touch (5th Generation) -->
-        <gap:splash src="res/ios/splash/Default-568h@2x.png"  width="640" height="1136" />
-        
-        <!-- iPhone 6 -->
-        <gap:splash src="res/ios/icon/Default-667h@2x.png" gap:platform="ios" width="750" height="1334" />
-
-
-    </platform>
-    
-    <platform name="android">
-        <icon src="res/android/icon/ldpi.png" density="ldpi" />
-        <icon src="res/android/icon/mdpi.png" density="mdpi" />
-        <icon src="res/android/icon/hdpi.png" density="hdpi" />
-        <icon src="res/android/icon/xhdpi.png" density="xhdpi" />
-        <icon src="res/android/icon/xxhdpi.png" density="xxhdpi" />
-        
-        <!-- SPLASH -->
-        <gap:splash src="res/android/splash/ldpi.png"  width="240" height="320" />
-        <gap:splash src="res/android/splash/mdpi.png"  width="320" height="480" />
-        <gap:splash src="res/android/splash/hdpi.png"  width="480" height="800" />
-
-    </platform>
-    
-
+    <gap:plugin name="org.apache.cordova.file" version="1.3.1" />
+    <gap:plugin name="com.teamnemitoff.phonedialer" version="0.3.0" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
 </widget>
