@@ -1,7 +1,6 @@
 
 var $ = jQuery.noConflict();
 
-
 $(window).resize(function(){
 	resize();
 });
@@ -13,13 +12,12 @@ function resize() {
 
 setTimeout(function() {
 	resize();
-	if(navigator.splashscreen)  navigator.splashscreen.hide();
-}, 6000);
+}, 3000);
 
 
- /* $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
+  $('.form').find('input, select, textarea').on('touchstart mousedown click', function(e){
         e.stopPropagation();
- }); */
+ }); 
 
 	
 	var swiperParent = new Swiper('.swiper-parent',{
@@ -34,6 +32,9 @@ setTimeout(function() {
 	      if (swiperParent.activeIndex == 0){
 	        $('#header').animate({'top':'-100px'},400);
 	      }
+		  if (swiperParent.activeIndex == 2) {
+			  $(".btn-calendar .notification").hide();
+		  }
 	      //üyelik alanı sorgusu
 	      if (swiperParent.activeIndex == 3) {
 	    	  var ctrl = angular.element(document.getElementById('memberController')).scope();
@@ -49,7 +50,8 @@ setTimeout(function() {
 	});
 	
 	
-	
+	 var swipersportdetail = $('.swiper-sport-detail').kinetic();
+
 	var swipernested1 = $('.swiper-nested1').swiper({
 	        mode:'vertical',
 	        slidesPerViewFit:false,
@@ -122,9 +124,8 @@ setTimeout(function() {
 	});
 
 	$(".swiper-nested5 li").click(function(){
-			var defer = setTimeout(function(){
+			setTimeout(function(){
 				swipernested5.reInit();
-				clearTimeout(defer);
 			},1000);
 	});
 
@@ -195,40 +196,27 @@ setTimeout(function() {
 		swipernested10.swipeTo(0);
 	});
 	
-
-	
-	$('#footer-menu .btn-call-phone').click(function(){
-		var r = confirm("+905335645125 aransın mı?");
-	    if (r == true) {
-	    	var p = device.platform;
-	    	if (p == "Android" || p == "iOS") {
-	    		phonedialer.dial( "+905335645125", 
-	    				  function(err) {
-	    				    if (err == "empty") alert("Telefon numarası çözümlenemedi!");
-	    				    else alert("Hata :" + err);    
-	    				  },
-	    				  function(success) { }
-	    				);
-	    	} else {
-	    		alert("Telefonunuz Bu Fonksiyonu Desteklemiyor.");
-	    	}
-	    }
-	});
 	
 	$('#footer-menu .btn-twitter').click(function(){
-		swiperParent.swipeTo(10);
+		var ref = window.open('https://twitter.com/powerfullclub', '_blank', 'location=yes');
 	});
 	
 	$('#footer-menu .btn-facebook').click(function(){
-		//swiperParent.swipeTo(11);
-		var ref = window.open('http://touch.facebook.com/powerfullclub', '_blank', 'location=no');
+		var ref = window.open('http://touch.facebook.com/powerfullclub','_blank', 'location=yes');
 	});
 	
 	$('#footer-menu .btn-contact').click(function(){
-		swiperParent.swipeTo(11);
+		//swiperParent.swipeTo(10);
+		var ref = window.open('http://instagram.com/powerfullclub/','_blank', 'location=yes');
 	});
 	
-	
+
+	$("#CommentForm").validate({
+		submitHandler: function(form) {
+		ajaxContact(form);
+			return false;
+		}
+	});
     
     $('.gohome').click(function(){
     	swiperParent.swipeTo(0);
@@ -244,7 +232,92 @@ setTimeout(function() {
         $(this).toggleClass("activeb").next().slideToggle("slow");
         return false;
     });
+	
+	
+	$(".trigger_activity").click(function(){
+        $(this).toggleClass("activea").next().slideToggle("slow");
+        return false;
+    });
+	
+	$(".toggle-activity-content-1").click(function(){
+		$(".trigger_activity").toggleClass("activea").next().slideToggle("slow");
+		$(".trigger_activity a").html($(this).find(".tag").html());
+		$(".activity-content-1").show();
+		$(".activity-content-2").hide();
+	});
+	$(".toggle-activity-content-2").click(function(){
+		$(".trigger_activity").toggleClass("activea").next().slideToggle("slow");
+		$(".trigger_activity a").html($(this).find(".tag").html());
+		$(".activity-content-2").show();
+		$(".activity-content-1").hide();
+		
+		var $grid = $( '#tp-grid' ),
+					$name = $( '#name' ),
+					$close = $( '#close' ),
+					$loader = $( '<div class="loader"><span>yükleniyor...</span></div>' ).insertBefore( $grid ),
+					$gallery_created = false,
+					stapel = $grid.stapel({
+						delay : 50,
+						gutter : 6,
+						onLoad : function() {
+							$loader.remove();
+							$close.hide();
+						},
+						onBeforeOpen : function( pileName ) {
+							$name.html( pileName );
+							$close.show();
+						},
+						onAfterOpen : function( pileName ) {
+							swipernested4.reInit();
+							if ($gallery_created === false) {
+								$("#tp-grid .swipebox").swipebox();
+								$gallery_created = true;
+								}
+							
+						},
+						onAfterClose: function(pileName) {
+							swipernested4.reInit();
+						   // $("#tp-grid .swipebox").swipebox.destroy();
+						}
+					} );
+					
+					$close.on( 'click', function() {
+						$close.hide();
+						$name.empty();
+						stapel.closePile();
+					} );
+	});
+	$(".activity-content-2").hide();
+	
+	
     $(".post_more").click(function(){
         $(this).toggleClass("activep").next().slideToggle("slow");
         return false;
     });
+	
+	$(".swipebox").swipebox();
+			
+
+$("#CommentForm").validate({
+	submitHandler: function(form) {
+		ajaxContact(form);
+		return false;
+	}
+});
+
+jQuery(function($) {
+ 
+  
+  // /////
+  // CLEARABLE INPUT
+  function tog(v){return v?'addClass':'removeClass';} 
+  $(document).on('input', '.clearable', function(){
+    $(this)[tog(this.value)]('x');
+  }).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+  }).on('click', '.onX', function(){
+    $(this).removeClass('x onX').val('').change();
+  });
+  
+  
+});

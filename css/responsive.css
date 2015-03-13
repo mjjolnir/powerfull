@@ -19,6 +19,7 @@
 @media screen and (max-width: 320px) {
     .borders ul li{padding:4% 0.1%;width:27%;}
     .menu ul li{  padding:4.1% 0.1%;width:28.5%;margin:1% 0 2% 3.5%;}
+	.menu-img-academy { width:35%; }
 }
 
 /*  HI RES DEVICES ----------------------------- */

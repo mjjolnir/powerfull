@@ -1,6 +1,3 @@
-
-
-
 (function(window, angular, undefined) {'use strict';
     var agl = angular || {};
     var ua  = navigator.userAgent;
@@ -25,25 +22,77 @@
 
 })(window, window.angular);
 
+
 	var powerfullApp = angular.module("powerfullApp", ['ngSanitize']);
 
 	powerfullApp.controller("calendarController", function($scope, $http, $templateCache) {
+		//window.localStorage.clear();
 	      $scope.current = 0; 
+		  $scope.showInternalError = false;
 	      $scope.showDayList = false;
 	      $scope.showDayDetail = false;
-	    
-	      $scope.preData = [{"title":"Caddebostan Studio 1","data":[{"title":"Pazartesi","data":["WEIGHT LOSS P\u00c4\u00b0LATESAli09:30 - 10:15","EXP. SIX PACK Ali 10:20 - 10:35","ALL WORKOUT Dogan 10:40 - 11:25","CYCLING LIVE Mert 18:45 - 19:30","BOSU PILATES Aslan 19:45 - 20:30","YOGA - AKI\u00c5\u009e Bade 20:45 - 21:45"]},{"title":"Sali","data":["SURFING BOSU Ozcan 10:00 - 10:45","H.I.I.T Dogan 11:00 - 11:45","TABATA Burcin 19:00 - 19:30","SPINNING Aslan 20:00 - 20:45","PILATES Ali 21:00 - 21:45"]},{"title":"Carsamba","data":["PILATES Ali 10:00 - 10:45","STRETCH THE LIMITS Dogan 10:50 - 11:05","ALL WORKOUT Dogan 11:10 - 11:55","TAE BO Volkan 19:00 - 19:45","CIRCUIT TRAINING Ozcan 20:00 - 20:45","CYCLING LIVE Aslan 21:00 - 21:45"]},{"title":"Persembe","data":["CORE PILATES Ali 10:00 - 10:45","***AQUA GYM Dogan 10:30 - 11:15","TRIPLE \"B\" Burcin 11:00 - 11:45","SPINNING Ali 12:00 - 12:45","YOGA BEGINNER Devrim 19:45 - 20:30","PILATES Aslan 20:45 - 21:30"]},{"title":"Cuma","data":["PILATES Ali 09:30 - 10:15","EXP. SIX PACK Ozcan 10:20 - 10:35","CARDIO STEP Ozcan 10:40 - 11:25","SPINNING Mert 19:00 - 19:45","BRAZILIAN BUTTS Dogan 20:00 - 20:30","TAE BO Aslan 20:45 - 21:30"]},{"title":"Cumartesi","data":["YOGA - AKI\u00c5\u009e Bade 09:30 - 10:45","POWER PUMP Volkan 11:00 - 11:45","SPINNING MIX MUSCLE Cuneyt 12:00 - 12:45","CORE PILATES Ali 13:00 - 13:45","ZUMBA Tulay 14:00 - 14:45","\u00a0."]},{"title":"Pazar","data":["CIRCUIT TRAINING Ozcan 11:00 - 11:45","CYCLING Aslan 12:00 - 12:45","PILATES Aslan 13:00 - 13:45","TABATA Burcin 14:00 - 14:30","\u00a0."]}]},{"title":"Caddebostan Studio 2","data":[{"title":"Pazartesi","data":["EXP. SIX PACK Mert 18:25 - 18:40","CROSSCAMP ORIGINAL Dogan 19:15 - 19:45","MUSCLE TIME Volkan 20:00 - 20:45","\u00a0 ."]},{"title":"Sali","data":["INTERVAL TRAINING Semih 18:45 - 19:30","PUSH-UP MIX Semih 19:45 - 20:00","EXP. SIX PACK Semih 20:00 - 20:15","\u00a0."]},{"title":"Carsamba","data":["EXP. SIX PACK Mert 18:45 - 19:00","CROSSCAMP ORIGINAL Dogan 20:45 - 21:15","\u00a0.","\u00a0."]},{"title":"Persembe","data":["LAYERING Burcin 19:00 - 19:30","F&C TRAINING Volkan 19:45 - 20:30","PUSH-UP MIX Semih 20:45 - 21:00","EXP. SIX PACK Semih 21:00 - 21:15"]},{"title":"Cuma","data":["EXP. SIX PACK Mert 18:30 - 18:45","\u00a0.","\u00a0."]},{"title":"Cumartesi","data":["EXP. SIX PACK Volkan 12:45 - 13:00","\u00a0.","\u00a0."]},{"title":"Pazar","data":["EXP. SIX PACK Burcin 11:45 - 12:00","\u00a0.","\u00a0."]}]},{"title":"Fenerbahce Ders Programi","data":[{"title":"Pazartesi","data":["PILATES Gizem 10:00","PILATES Gizem 19:15"]},{"title":"Carsamba","data":["PILATES Aslan 19:15"]},{"title":"Cuma","data":["PILATES Gizem 10:00","PILATES Gizem 19:15"]},{"title":"Cumartesi","data":["PILATES Aslan 11:00"]}]}];
-	      
-	     $http({
+		  
+		  $scope.initialData = [{"title":"Caddebostan Studio 1","data":[{"title":"Pazartesi","data":["WEIGHT LOSS PILATES Ali 09:30 - 10:15","EXP. SIX PACK Ali 10:20 - 10:35","ALL WORKOUT Dogan 10:40 - 11:25","CYCLING LIVE Mert 18:45 - 19:30","BOSU PILATES Aslan 19:45 - 20:30","YOGA - AKI\u00c5\u009e Bade 20:45 - 21:45"]},{"title":"Sali","data":["SURFING BOSU Ozcan 10:00 - 10:45","H.I.I.T Dogan 11:00 - 11:45","TABATA Burcin 19:00 - 19:30","SPINNING Aslan 20:00 - 20:45","PILATES Ali 21:00 - 21:45"]},{"title":"Carsamba","data":["PILATES Ali 10:00 - 10:45","STRETCH THE LIMITS Dogan 10:50 - 11:05","ALL WORKOUT Dogan 11:10 - 11:55","TAE BO Volkan 19:00 - 19:45","CIRCUIT TRAINING Ozcan 20:00 - 20:45","CYCLING LIVE Aslan 21:00 - 21:45"]},{"title":"Persembe","data":["CORE PILATES Ali 10:00 - 10:45","***AQUA GYM Dogan 10:30 - 11:15","TRIPLE \"B\" Burcin 11:00 - 11:45","SPINNING Ali 12:00 - 12:45","YOGA BEGINNER Devrim 19:45 - 20:30","PILATES Aslan 20:45 - 21:30"]},{"title":"Cuma","data":["PILATES Ali 09:30 - 10:15","EXP. SIX PACK Ozcan 10:20 - 10:35","CARDIO STEP Ozcan 10:40 - 11:25","SPINNING Mert 19:00 - 19:45","BRAZILIAN BUTTS Dogan 20:00 - 20:30","TAE BO Aslan 20:45 - 21:30"]},{"title":"Cumartesi","data":["YOGA - AKI\u00c5\u009e Bade 09:30 - 10:45","POWER PUMP Volkan 11:00 - 11:45","SPINNING MIX MUSCLE Cuneyt 12:00 - 12:45","CORE PILATES Ali 13:00 - 13:45","ZUMBA Tulay 14:00 - 14:45","\u00a0."]},{"title":"Pazar","data":["CIRCUIT TRAINING Ozcan 11:00 - 11:45","CYCLING Aslan 12:00 - 12:45","PILATES Aslan 13:00 - 13:45","TABATA Burcin 14:00 - 14:30","\u00a0."]}]},{"title":"Caddebostan Studio 2","data":[{"title":"Pazartesi","data":["EXP. SIX PACK Mert 18:25 - 18:40","CROSSCAMP ORIGINAL Dogan 19:15 - 19:45","MUSCLE TIME Volkan 20:00 - 20:45","\u00a0 ."]},{"title":"Sali","data":["INTERVAL TRAINING Semih 18:45 - 19:30","PUSH-UP MIX Semih 19:45 - 20:00","EXP. SIX PACK Semih 20:00 - 20:15","\u00a0."]},{"title":"Carsamba","data":["EXP. SIX PACK Mert 18:45 - 19:00","CROSSCAMP ORIGINAL Dogan 20:45 - 21:15","\u00a0.","\u00a0."]},{"title":"Persembe","data":["LAYERING Burcin 19:00 - 19:30","F&C TRAINING Volkan 19:45 - 20:30","PUSH-UP MIX Semih 20:45 - 21:00","EXP. SIX PACK Semih 21:00 - 21:15"]},{"title":"Cuma","data":["EXP. SIX PACK Mert 18:30 - 18:45","\u00a0.","\u00a0."]},{"title":"Cumartesi","data":["EXP. SIX PACK Volkan 12:45 - 13:00","\u00a0.","\u00a0."]},{"title":"Pazar","data":["EXP. SIX PACK Burcin 11:45 - 12:00","\u00a0.","\u00a0."]}]},{"title":"Fenerbahce Ders Programi","data":[{"title":"Pazartesi","data":["PILATES Gizem 10:00","PILATES Gizem 19:15"]},{"title":"Carsamba","data":["PILATES Aslan 19:15"]},{"title":"Cuma","data":["PILATES Gizem 10:00","PILATES Gizem 19:15"]},{"title":"Cumartesi","data":["PILATES Aslan 11:00"]}]}];
+	
+		 $(".btn-calendar .icon").attr("src", "images/loader.gif");
+		 
+		 $http({
 	        method: 'JSONP', 
 	        url: 'http://powerfullclub.com/calendar-mobile-data.php?callback=JSON_CALLBACK', 
 	        cache: $templateCache
-	    }).
-	      success(function(data, status) {
-	        $scope.status = status;
-	        $scope.data = data.data;
-	          
-	        $scope.current = $scope.data[0];
+	    }). 
+		success(function(response, status) {
+			  var store = window.localStorage;
+			  
+	        $scope.data = response.data;
+			
+			var key = store.getItem("calendarKey");
+			if (key) {
+				if (key !== response.storedkey) {
+					$(".btn-calendar .notification").show("slow");
+				}
+			}
+			
+			store.setItem("calendarKey",response.storedkey);
+			store.setItem("calendarData",angular.toJson(response.data));
+			$scope.loadAfter();
+			
+	      }).
+	      error(function(data, status) {
+			  var store = window.localStorage;
+	
+			   if (status === 0 || status === 404) {
+					   	$scope.errorStatus = 'Bağlantı Kurulamadı, İnternet bağlantınızı kontrol ediniz.';
+					} else if (status  == 401) {
+					   	$scope.errorStatus = 'Unauthorized';
+					} else if (status == 405) {
+					   	$scope.errorStatus = 'HTTP verb not supported [405]';
+					} else if (status == 500) {
+					   	$scope.errorStatus = 'Internal Server Error [500].';
+					} else {
+					  	$scope.errorStatus = "Undefined Error.";
+			 }
+			  
+			  var key = store.getItem("calendarKey");
+				if (!key) {
+					store.setItem("calendarKey",0);
+				}
+			
+			  var cData = store.getItem("calendarData");
+			  if (cData) {
+				  cData = angular.fromJson(cData);
+				  $scope.errorStatus = "Veriler eski olabilir. İnternet bağlantınızı açıp uygulamayı yeniden başlatın!";
+			 } else {
+				 cData = $scope.initialData;
+			}
+			store.setItem("calendarData",angular.toJson(cData));
+			$scope.data = cData;
+			$scope.showInternalError = true;
+			$scope.loadAfter();
+	    });
+		 
+		 $scope.loadAfter = function() {
+			$scope.current = $scope.data[0];
 	        $scope.daysData = $scope.current.data;
 	        $scope.currentDayData = $scope.current.data[0];
 			$scope.currentLocation = $scope.current.title;
@@ -51,17 +100,12 @@
 			
 	        $scope.toggleDaysBlocks(true);
 	       
-	        var defer = setTimeout(function(){
+	        setTimeout(function(){
+				$(".btn-calendar .icon").attr("src", "images/menu_icons/calendar.png");
 				swipernested2.reInit();
-				clearTimeout(defer);
-			},1000);
-	        
-	      }).
-	      error(function(data, status) {
-	        $scope.data = $scope.preData;
-	        $scope.status = status;
-	    });
-	    
+			},1000);	 
+		};
+		 
 	    $scope.toggleDays = function(index) {
 	        $scope.toggleDaysBlocks(true);
 	        $scope.current = $scope.data[index];
@@ -80,7 +124,13 @@
 	        $scope.showDayList = enable;
 	        $scope.showDayDetail = enable === true ? false: true;
 	    }
+		
+		$scope.hideMessageBox=function() {
+				$scope.showInternalError = false;
+		}
 	});
+
+
 
 	powerfullApp.controller("memberController", function($scope, $http, $templateCache) {
 		//window.localStorage.clear();
@@ -90,6 +140,8 @@
 		$scope.viewMenu = false;
 		$scope.viewMemberDetail = false;
 		$scope.viewSportsProgram = false;
+		$scope.showLoginButton = false;
+		
 		
 		$scope.initPage = function() {
 			var id = $scope.getMemberID();
@@ -123,12 +175,13 @@
 					$scope.showError("Bu Alan Sadece Rakam Olmalıdır.");
 				}
 			}
+			$scope.showLoginButton = true;
 			return false;
 		};
 		
 		$scope.loadMembersInfo = function(id) {
 			var store = window.localStorage;
-			var infoData = JSON.parse(store.getItem("MembersInfo"));
+			var infoData = angular.fromJson(store.getItem("MembersInfo"));
 
 			if ($scope.isEmpty(infoData)) {
 				if (id) {
@@ -197,18 +250,33 @@
 									
 									$scope.setBusy(false);
 									$scope.showMemberPage();
+									//$scope.showLoginButton = false;
 							});
 							   
 							} else {
 								$scope.showError(data.Adi);
+								$scope.showLoginButton = true;
 							}
 					  }).error(function(data, status) {
 						  $scope.setBusy(false);
+						  if (status === 0 || status === 404) {
+									$scope.errorStatus = 'Bağlantı Kurulamadı, İnternet bağlantınızı kontrol ediniz.';
+								} else if (status  == 401) {
+									$scope.errorStatus = 'Unauthorized';
+								} else if (status == 405) {
+									$scope.errorStatus = 'HTTP verb not supported [405]';
+								} else if (status == 500) {
+									$scope.errorStatus = 'Internal Server Error [500].';
+								} else {
+									$scope.errorStatus = "Undefined Error.";
+						 }
+						 $scope.showInternalError = true;
 					});
 					
 					 
 				}
 			} else {
+				
 				$scope.loadFromStore();
 				$scope.showMemberPage();
 			}
@@ -292,7 +360,15 @@
 		};
 		
 		$scope.showError = function(msg) {
-			alert(msg);
+			function xalert() {
+				//do nothing
+			}
+			if (navigator && navigator.notification) {
+				navigator.notification.alert(msg, xalert, ["Uyarı"], ["Tamam"])	;
+			} else {
+				alert(msg);
+			}
+
 		};
 		
 		$scope.setBusy = function(bool) {
@@ -300,18 +376,18 @@
 		};
 		
 		$scope.showMemberPage = function() {
-			setTimeout(function () {
-				$scope.$apply(function () {
-					$scope.viewUserInfo = true;
-					$scope.viewMenu = true;
-					$scope.viewMemberDetail = false;
-					$scope.viewSportsProgram = false;
-					$scope.viewSportsProgramDetail = false;
-					$scope.viewSportsProgramCardio = false;
-					$scope.viewSportsProgramMeasurement = false;
-					swipernested3.reInit();
-				});
-			}, 300);
+					setTimeout(function () {
+						$scope.$apply(function () {
+							$scope.viewUserInfo = true;
+							$scope.viewMenu = true;
+							$scope.viewMemberDetail = false;
+							$scope.viewSportsProgram = false;
+							$scope.viewSportsProgramDetail = false;
+							$scope.viewSportsProgramCardio = false;
+							$scope.viewSportsProgramMeasurement = false;
+							swipernested3.reInit();
+						});
+					}, 300);
 		};
 		
 		$scope.showMemberDetailPage = function() {
@@ -373,6 +449,9 @@
 		};
 		
 	});
+
+
+
 
 	powerfullApp.controller('galleryController',function($scope, $http, $timeout) {
 	    $scope.fetch = function() {
@@ -541,6 +620,9 @@
 	                    	    "desc": "Adres: Caddebostan Mah. Sarıgül Sok. No:27/B l-Kadıköy/İSTANBUL<br>Tel: 0216 478 17 38<br>Web: www.cafesirdas.com<br>İndirim Oranı: %15 İndirim uygulanmaktadır.​"
 	                    	  }
 	                    	];
+		
+		$(".menu-img-identification").attr("src", "images/loader.gif");
+		
 	    $http({
 	        method: 'JSONP', 
 	        url: 'http://caddebostan.powerfullclub.com/clubber-json.php?callback=JSON_CALLBACK', 
@@ -551,16 +633,16 @@
 	        $scope.data = data.data;
 	        $scope.prevdata = $scope.data[0];
 	        
-	        var defer = setTimeout(function(){
+	        setTimeout(function(){
 				swipernested5.reInit();
-				clearTimeout(defer);
+				$(".menu-img-identification").attr("src", "images/menu_icons/identification.png");
 			},2000);
 	        
 	      }).
 	      error(function(data, status) {
 	        $scope.data = $scope.prepdata;
 	        $scope.status = status;
-	          alert("error");
+	        $(".menu-img-identification").attr("src", "images/menu_icons/identification.png");
 	    });
 	    
 	    $scope.closePanel = function() {
@@ -598,8 +680,7 @@
 	    
 	    function translateToPrevPane() {
 	        var current_y = swipernested5.getWrapperTranslate("y");
-	        var panel_top = $("#winner-card-prev-panel").position().top;
-	        swipernested5.setWrapperTranslate(0, (-panel_top)+70, 0);
+	        swipernested5.setWrapperTranslate(0, (current_y-120), 0);
 	    }
 	    
 	    function clearExpanded() {
@@ -639,6 +720,7 @@
            {"image":"images%2Fnews%2F10%2Fimg_1642.jpg","title":"3. \u015eUBEM\u0130ZE BEKL\u0130YORUZ...","desc":"Fenerbah\u00e7e ve CKM 'den sonra Powerfull Angora \u015fubesi de hizmet vermeye ba\u015flad\u0131.Kapal\u0131 havuzun da bulundu\u011fu Angora'da \u00f6zel y\u00fczme dersleri,sauna,buhar odas\u0131,dinlenme b\u00f6l\u00fcm\u00fc,masaj,gym-cardio,Power Bar b\u00f6l\u00fcmlerinden faydalanabilirsiniz.Kendinize vakit ay\u0131r\u0131n,Powerfull Angora'da rahatlay\u0131n! "},
            {"image":"images%2Fnews%2F3%2Fimg_0469.jpg","title":"POWERFULL\u2019DA MASAJ YAPTIRDINIZ MI? ","desc":"G\u00fcnl\u00fck hayat\u0131n stresinden ar\u0131nmak ve v\u00fccudunuza e\u015fsiz bir deneyim ya\u015fatmak i\u00e7in; SPA b\u00f6l\u00fcm\u00fcm\u00fczde uzman terapistlerimiz ile masaj hizmetlerinden yararlanabilirsiniz. Kendinizi yeniden do\u011fmu\u015f gibi hissedeceksiniz\u2026"}
 	    ];
+		$(".menu-img-news").attr("src", "images/loader.gif");
 	    $http({
 	        method: 'JSONP', 
 	        url: 'http://caddebostan.powerfullclub.com/news-json.php?callback=JSON_CALLBACK', 
@@ -655,15 +737,18 @@
 					lessLink: '<a href="#">Kapat</a>'
 				});
 				swipernested9.reInit();
+				$(".menu-img-news").attr("src", "images/menu_icons/news.png");
 			},4000);
 	        
 	      }).
 	      error(function(data, status) {
 	        $scope.status = status;
 	        $scope.data = $scope.predata;
+			$(".menu-img-news").attr("src", "images/menu_icons/news.png");
 	    });
 	});
 	
+	/*
 	powerfullApp.controller('twitterController',function($scope, $http, $templateCache) {
 	     
 	    $http({
@@ -779,7 +864,7 @@
 	          }
 	     } // ify
 	});
-	
+	*/
 	
 	powerfullApp.controller('contactController',function($scope, $http, $templateCache) {
 		

@@ -49,6 +49,16 @@ h2.page_title{ font-size:30px;padding:0 0 20px 0;}
 	height:auto;
 }
 
+
+.clearable{
+  background: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
+  transition: background 0.4s;
+  width:100% !important;
+}
+.clearable.x  { background-position: right 5px center; }
+.clearable.onX{ cursor: pointer; }
+
+
 /* ------------- main image sliders -------------*/
 .fit-image {
 	width:100%;
@@ -503,6 +513,20 @@ ul.listing_detailed li a{}
 .trigger_blog{padding:0px;margin:0;}
 .trigger_blog a{text-decoration: none;display: block; padding:2px 0 2px 0;font-size:16px;font-weight:normal; }
 .toggle_container_blog{overflow: hidden;padding:15px 0 0 0;clear: both; display:none;}
+
+.toogle_wrap_activity{width:90%; padding:3% 4%; margin:0 0 10px 0;}
+.trigger_activity{padding:0px;margin:0;}
+.trigger_activity a{text-decoration: none;display: block; padding:2px 0 2px 0;font-size:16px;font-weight:normal; }
+.toggle_container_activity{overflow: hidden;padding:15px 0 0 0;clear: both; display:none;}
+
+.activity-content-2 {
+	width:100%;
+	display:block;
+	min-height:100%;
+	padding:0px;
+	margin:0px;
+	position:relative;
+}
 
 /* Tabs
 /*------------------------------------------*/

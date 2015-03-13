@@ -27,6 +27,52 @@ a.button_11, a.button_12{color:#FFFFFF;}
 .logo, .logo a{ color:#FFFFFF;}
 
 
+.swiper-sport-detail {
+	border: solid 1px #000;
+	height: 200px;
+	width: 98%;
+	overflow: hidden;
+	margin:10px 0px;
+}
+
+.swiper-sport-detail .inner {
+	width: 500px; 
+	height: 100px; 
+}
+
+.swiper-sport-detail .inner   table {
+	 display: block;
+      width: 500px;
+}
+
+.swiper-sport-detail .inner  table td {
+	border:1px solid #CCC;
+}
+.swiper-sport-detail .inner  table tr:nth-child(even) {background: #EFEFEF}
+.swiper-sport-detail .inner  table tr:nth-child(odd) {background: #FFF}
+
+/* -------------- error, warning box -------------*/
+.inline-error-box {
+	border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('images/error.png');
+}
+
+.menu-btn  .notification {
+	position:absolute;
+	width:20px;
+	height:20px;
+	top:0px;
+	right:0px;
+	background:transparent url(images/new.png) no-repeat center center;
+	display:none;
+}
+
 /* ------------------------- UI -------------------*/
 .member-info-panel .top-frame  {
 	background:#142ea9 url(images/user-info-bg.jpg) repeat-x top left;
@@ -39,6 +85,30 @@ a.button_11, a.button_12{color:#FFFFFF;}
 
 .member-info-panel .top-frame .refreshinfo {
 	background: url(images/refresh.png) center center no-repeat;
+}
+
+.member-login-wrapper {
+	position:relative;
+	margin-top:35%;
+   
+}
+
+.member-login-btn {
+	background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  text-shadow: 1px 1px 3px #333333;
+  color: #ffffff;
+  font-size: 22px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-align:center !important;
 }
 
 .input-wrapper {
@@ -106,7 +176,7 @@ background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 }
-.menu ul li a{ color:#FFFFFF; text-decoration:none;  text-align: center;} 
+.menu ul li a{ color:#FFFFFF; text-decoration:none;  text-align: center; position:relative; display:block;} 
 .menu ul li a span{ display:block; text-align:center; font-size:11px; line-height:15px;}
 .menu ul li img{ display:inline-block;max-width:50%;}
 
@@ -140,11 +210,19 @@ background-size: cover;
 .active {background-position:100% 0px; }
 .trigger a{color: #636363;}
 .trigger a:hover, .trigger a:hover:focus{color:#4a8d09;}
+
 .toogle_wrap_blog{background-color:#0e3139;}
 .trigger_blog{background:url(images/toggle_blog.png) no-repeat right;background-position:100% -22px;}
 .activeb {background-position:100% 0px; }
 .trigger_blog a{color: #fff;}
 .trigger_blog a:hover, .trigger_blog a:hover:focus{color:#fff;}
+
+.toogle_wrap_activity{background-color:#fff;border:1px solid #dedede;}
+.trigger_activity{background:url(images/toggle.png) no-repeat right;background-position:100% -22px;}
+.activea {background-position:100% 0px; }
+.trigger_activity a{color: #0e3139;}
+.trigger_activitya:hover, .trigger_activity a:hover:focus{color:#fff;}
+
 
 .image_single{ background-color:#f4f4f4; border:1px solid #ececec;}
 blockquote{border-top:1px solid #ececec;border-bottom:1px solid #ececec;}

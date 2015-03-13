@@ -30,7 +30,9 @@
     
     <script type="text/javascript" src="js/jquery/modernizr.custom.63321.js"></script>
     <script type="text/javascript" src="js/jquery/jquery.stapel.js"></script>
-
+     <script type="text/javascript" src="js/jquery/jquery.validate.min.js"></script>
+	<script src="js/jquery/jquery.kinetic.js" type="text/javascript" charset="utf-8"></script>
+    
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css' />
     
     <title>Powerfull Club</title>
@@ -44,7 +46,7 @@
    <div id="header">
    	   <h2 class="header-title"></h2>
       <div class="gohome radius20"><a href="#"><img src="images/icons/home.png" alt="" title="" /></a></div>
-      <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(12);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
+      <div class="gomenu radius20"><a href="#" onClick="swiperParent.swipeTo(10);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
       
   </div>
   <div class="swiper-container swiper-parent">
@@ -58,15 +60,15 @@
       					<div class="logo"><a href="#"><img src="images/mobile-logo.png" alt="" title="" border="0" /></a></div>
 		                <div class="menu">
 			                <ul>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(1);"><img src="images/menu_icons/clubs.png" alt="" title="" /><span>Kulüpler</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(2);"><img src="images/menu_icons/calendar.png" alt="" title="" /><span>Ders Programı</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(3);"><img src="images/menu_icons/user.png" alt="" title="" /><span>Üyere Özel</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(4);"><img src="images/menu_icons/albums.png" alt="" title="" /><span>Etkinlikler</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(5);"><img src="images/menu_icons/identification.png" alt="" title="" /><span>Winner Card</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(6);"><img src="images/menu_icons/powerfullacademy.png" alt="" title="" /><span>Akademi</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(7);"><img src="images/menu_icons/trainer.png" alt="" title="" /><span>Training</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(8);"><img src="images/menu_icons/wellness.png" alt="" title="" /><span>Wellness</span></a></li>
-			                	<li><a href="#" onclick="swiperParent.swipeTo(9);"><img src="images/menu_icons/news.png" alt="" title="" /><span>Duyurular</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(1);"><img src="images/menu_icons/clubs.png" alt="" title="" /><span>Kulüpler</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(2);" class="menu-btn btn-calendar"><img  class="icon" src="images/menu_icons/calendar.png" alt="" title="" /><span class="title">Ders Programı</span><span class="notification"></span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(3);" class="menu-btn btn-member"><img src="images/menu_icons/user.png" alt="" title="" /><span class="title">Üyelere Özel</span><span class="notification"></span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(4);"><img src="images/menu_icons/albums.png" alt="" title="" /><span>Etkinlikler</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(5);"><img class="menu-img-identification" src="images/menu_icons/identification.png" alt="" title="" /><span>Winner Card</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(6);"><img class="menu-img-academy" src="images/menu_icons/powerfullacademy.png" alt="" title="" /><span>Powerfull Academy</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(7);"><img src="images/menu_icons/sendmail.png" alt="" title="" /><span>Sizi Dinliyoruz</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(8);"><img src="images/menu_icons/medical.png" alt="" title=""  style="max-width: 100%;" /><span>&nbsp;</span></a></li>
+			                	<li><a href="#" onClick="swiperParent.swipeTo(9);"><img  class="menu-img-news" src="images/menu_icons/news.png" alt="" title="" /><span>Duyurular</span></a></li>
 			                </ul>
 			                <div class="clearfix"></div>
 		                </div>
@@ -79,15 +81,6 @@
       			</div>
       			<div class="swiper-slide">
       				<div class="fit-image"><img src="images/slides/slide-3.jpg" /></div>
-      			</div>
-      			<div class="swiper-slide">
-      				<div class="fit-image"><img src="images/slides/slide-4.jpg" /></div>
-      			</div>
-      			<div class="swiper-slide">
-      				<div class="fit-image"><img src="images/slides/slide-5.jpg" /></div>
-      			</div>
-      			<div class="swiper-slide">
-      				<div class="fit-image"><img src="images/slides/slide-6.jpg" /></div>
       			</div>
       		</div>
       </div>
@@ -160,7 +153,7 @@
                                             <div class="toggle_container">
                                                 <div class="trainers">
                                                     <ul>
-                                                        <li><img src="images/trainers/uifaces1.jpg" alt="" title="" /><div>Ali Koşucu</div></li>
+                                                        <!-- <li><img src="images/trainers/uifaces1.jpg" alt="" title="" /><div>Ali Koşucu</div></li>
                                                         <li><img src="images/trainers/uifaces2.jpg" alt="" title="" /><div>Sibel Tezcan</div></li>
                                                         <li><img src="images/trainers/uifaces3.jpg" alt="" title="" /><div>Eğitmen 3</div></li>
                                                         <li><img src="images/trainers/uifaces4.jpg" alt="" title="" /><div>Eğitmen 4</div></li>
@@ -168,7 +161,7 @@
                                                         <li><img src="images/trainers/uifaces6.jpg" alt="" title="" /><div>Eğitmen 6</div></li>
                                                         <li><img src="images/trainers/uifaces7.jpg" alt="" title="" /><div>Eğitmen 7</div></li>
                                                         <li><img src="images/trainers/uifaces8.jpg" alt="" title="" /><div>Eğitmen 8</div></li>
-                                                        <li><img src="images/trainers/uifaces9.jpg" alt="" title="" /><div>Eğitmen 9</div></li>
+                                                        <li><img src="images/trainers/uifaces9.jpg" alt="" title="" /><div>Eğitmen 9</div></li> -->
                                                     </ul>
                                                     <div class="clearfix"></div>
                                                 </div>   
@@ -190,6 +183,7 @@
             <div class="swiper-container swiper-nested2 vertical-container">
                 <div class="swiper-wrapper" ng-controller="calendarController">
                         <div class="swiper-slide">  
+                           <div class="inline-error-box radius8" ng-show="showInternalError" ng-click="hideMessageBox()">{{errorStatus}}</div>
                             <div class="toogle_wrap_blog radius8">
                                 <div class="trigger_blog"><a href="#">{{currentLocation}}</a></div>
                                     <div class="toggle_container_blog">
@@ -225,7 +219,8 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                     	<div id="memberController" ng-controller="memberController">
-                        
+                        	<div class="inline-error-box radius8" ng-show="showInternalError" ng-click="hideMessageBox()">{{errorStatus}}</div>
+                            <div ng-show="showLoginButton"  class="image_caption darkblue green_borderbottom radius4">Tekrar Giriş Yapın</div>
                     		<div ng-show="isBusy" class="loading"><img src="images/loader.gif" /></div>
                             
                     			<div ng-show="viewUserInfo" class="viewUserInfo">
@@ -257,15 +252,15 @@
                                     <li class="list-first-child" ng-click="showMemberDetailPage()">
                                         <a class="list-btn  icon-carat-r">Üyelik Bilgilerim</a>
                                     </li>
-                                    <li ng-click="showSportsProgram()">
+                                    <!-- <li ng-click="showSportsProgram()">
                                         <a class="list-btn  icon-carat-r">Spor Programım</a>
-                                    </li>
+                                    </li> -->
                                     <li ng-click="showSportsProgramDetail()">
-                                        <a class="list-btn  icon-carat-r">Spor Programı Detaylı</a>
+                                        <a class="list-btn  icon-carat-r">Spor Programı</a>
                                     </li>
-                                    <li ng-click="showSportsProgramCardio()">
+                                    <!-- <li ng-click="showSportsProgramCardio()">
                                         <a class="list-btn  icon-carat-r">Cardio Programı</a>
-                                    </li>
+                                    </li> -->
                                     <li ng-click="showSportsProgramMeasurement()">
                                         <a class="list-btn  icon-carat-r">Ölçümlerim</a>
                                     </li>
@@ -345,11 +340,18 @@
 								<div ng-show="viewSportsProgramDetail">
                                     <div class="btn-page-scroll shadow radius8">
                                     	<a class="list-btn btn-back radius8" ng-click="showMemberPage()">Ana Menüye Dön</a>
-                                        <div class="btn-page-scrollback" ng-click="SPDBackward()"></div>
-                                        <div class="btn-page-scrollforward" ng-click="SPDForward()"></div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <ul class="listview  radius8 shadow" >
+                                    		<div class="swiper-sport-detail">
+                                            		<div class="inner">
+                                                            <table class="sport-program-detail-table">
+                                                                    <tr><th>Gün</th><th>Kas Grubu</th><th>Hareket</th><th>Set</th><th>Tekrar</th><th>S. Arası(sn)</th></tr>
+                                                                    <tr ng-repeat="item in SportsProgramDetailList"><td>{{item.Gun}}</td><td>{{item.KasGrubu}}</td><td>{{item.Hareket}}</td><td>{{item.PSet}}</td><td>{{item.Tekrar}}</td><td>{{item.SetArasi}}</td></tr>
+                                                            </table>
+                                                      </div>
+                                    		</div>
+                                    
+                                    <!-- <ul class="listview  radius8 shadow" >
                                         <li class="list-first-child" >
                                             <span class="list-btn">Sira No : {{SportsProgramDetail.SiraNo}}</span>
                                         </li>
@@ -377,7 +379,7 @@
                                         <li class="list-last-child" >
                                             <span class="list-btn">Set Arasi : {{SportsProgramDetail.SetArasi}}</span>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                     <div class="clearfix"></div>
     <div class="scrolltop radius20">
     	<a href="#" class="scrolltop1">
@@ -435,201 +437,18 @@
     </div>
     <div class="clearfix"></div>
     <ul class="listview  radius8 shadow" >
-        <li class="list-first-child" > <span class="list-btn">ID : {{SportsProgramMeasurement.ID}}</span> </li>
-        <li ><span class="list-btn">DEVICE ID : {{SportsProgramMeasurement.DEVICE_ID}}</span></li>
-        <li ><span class="list-btn">OLCUM KAYIT TIPI : {{SportsProgramMeasurement.OLCUM_KAYIT_TIPI}}</span></li>
-        <li ><span class="list-btn">OLCUM YERI : {{SportsProgramMeasurement.OLCUMYERI}}</span></li>
-        <li ><span class="list-btn">OLCUM SIRANO : {{SportsProgramMeasurement.OLCUMSIRANO}}</span></li>
-        <li ><span class="list-btn">ILK KULLANICI : {{SportsProgramMeasurement.ILK_KULLANICI}}</span></li>
-        <li ><span class="list-btn">YAŞ  : {{SportsProgramMeasurement.AGE}}</span></li>
-        <li ><span class="list-btn">BMI  : {{SportsProgramMeasurement.BMI}}</span></li>
-        <li ><span class="list-btn">BMR KCAL  : {{SportsProgramMeasurement.BMR_KCAL}}</span></li>
-        <li ><span class="list-btn">BMR KJ  : {{SportsProgramMeasurement.BMR_KJ}}</span></li>
-        <li ><span class="list-btn">BMR SCORE  : {{SportsProgramMeasurement.BMR_SCORE}}</span></li>
-        <li ><span class="list-btn">BODY FAT BALANCE  : {{SportsProgramMeasurement.BODY_FAT_BALANCE}}</span></li>
-        <li ><span class="list-btn">BODY FAT BALANCE ARMS  : {{SportsProgramMeasurement.BODY_FAT_BALANCE_ARMS}}</span></li>
-        <li ><span class="list-btn">BODY FAT BALANCE LEGS  : {{SportsProgramMeasurement.BODY_FAT_BALANCE_LEGS}}</span></li>
-        <li ><span class="list-btn">BODY FAT BALANCE TRUNK  : {{SportsProgramMeasurement.BODY_FAT_BALANCE_TRUNK}}</span></li>
-        <li ><span class="list-btn">BODY MUSCLE BALANCE  : {{SportsProgramMeasurement.BODY_MUSCLE_BALANCE}}</span></li>
-        <li ><span class="list-btn">BODY MUSCLE BALANCE ARMS  : {{SportsProgramMeasurement.BODY_MUSCLE_BALANCE_ARMS}}</span></li>
-        <li ><span class="list-btn">BODY MUSCLE BALANCE LEGS  : {{SportsProgramMeasurement.BODY_MUSCLE_BALANCE_LEGS}}</span></li>
-        <li ><span class="list-btn">BODY MUSCLE BALANCE TRUNK  : {{SportsProgramMeasurement.BODY_MUSCLE_BALANCE_TRUNK}}</span></li>
-        <li ><span class="list-btn">BODY TYPE  : {{SportsProgramMeasurement.BODY_TYPE}}</span></li>
-        <li ><span class="list-btn">BONE MASS  : {{SportsProgramMeasurement.BONE_MASS}}</span></li>
-        <li ><span class="list-btn">BUST AROUND  : {{SportsProgramMeasurement.BUST_AROUND}}</span></li>
-        <li ><span class="list-btn">CALF AROUND  : {{SportsProgramMeasurement.CALF_AROUND}}</span></li>
-        <li ><span class="list-btn">CENTRAL FAT  : {{SportsProgramMeasurement.CENTRAL_FAT}}</span></li>
-        <li ><span class="list-btn">CHECK SUM  : {{SportsProgramMeasurement.CHECK_SUM}}</span></li>
-        <li ><span class="list-btn">DAILY ACTIVITY CAL  : {{SportsProgramMeasurement.DAILY_ACTIVITY_CAL}}</span></li>
-        <li ><span class="list-btn">DAILY SPORT CAL  : {{SportsProgramMeasurement.DAILY_SPORT_CAL}}</span></li>
-        <li ><span class="list-btn">DEGREE OF OBESITY  : {{SportsProgramMeasurement.DEGREE_OF_OBESITY}}</span></li>
-        <li ><span class="list-btn">ECW  : {{SportsProgramMeasurement.ECW}}</span></li>
-        <li ><span class="list-btn">ECW PERCENT  : {{SportsProgramMeasurement.ECW_PERCENT}}</span></li>
-        <li ><span class="list-btn">ESTIMATED HIP  : {{SportsProgramMeasurement.ESTIMATED_HIP}}</span></li>
-        <li ><span class="list-btn">ESTIMATED WAIST  : {{SportsProgramMeasurement.ESTIMATED_WAIST}}</span></li>
-        <li ><span class="list-btn">FAT MASS  : {{SportsProgramMeasurement.FAT_MASS}}</span></li>
-        <li ><span class="list-btn">FAT PERCENT  : {{SportsProgramMeasurement.FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">FAT TO GAIN LESE  : {{SportsProgramMeasurement.FAT_TO_GAIN_LESE}}</span></li>
-        <li ><span class="list-btn">FFM  : {{SportsProgramMeasurement.FFM}}</span></li>
-        <li ><span class="list-btn">FFM PERCENT  : {{SportsProgramMeasurement.FFM_PERCENT}}</span></li>
-        <li ><span class="list-btn">FIT RATE  : {{SportsProgramMeasurement.FIT_RATE}}</span></li>
-        <li ><span class="list-btn">GENDER  : {{SportsProgramMeasurement.GENDER}}</span></li>
-        <li ><span class="list-btn">HEIGHT  : {{SportsProgramMeasurement.HEIGHT}}</span></li>
-        <li ><span class="list-btn">HIP AROUND  : {{SportsProgramMeasurement.HIP_AROUND}}</span></li>
-        <li ><span class="list-btn">ICW  : {{SportsProgramMeasurement.ICW}}</span></li>
-        <li ><span class="list-btn">IDEAL FAT MASS  : {{SportsProgramMeasurement.IDEAL_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">IDEAL FAT MASS HIGH  : {{SportsProgramMeasurement.IDEAL_FAT_MASS_HIGH}}</span></li>
-        <li ><span class="list-btn">IDEAL FAT MASS LOW  : {{SportsProgramMeasurement.IDEAL_FAT_MASS_LOW}}</span></li>
-        <li ><span class="list-btn">IDEAL FIT RATE  : {{SportsProgramMeasurement.IDEAL_FIT_RATE}}</span></li>
-        <li ><span class="list-btn">IDEAL WEIGHT  : {{SportsProgramMeasurement.IDEAL_WEIGHT}}</span></li>
-        <li ><span class="list-btn">IDEAL WEIGHT HIGH  : {{SportsProgramMeasurement.IDEAL_WEIGHT_HIGH}}</span></li>
-        <li ><span class="list-btn">IDEAL WEIGHT LOW  : {{SportsProgramMeasurement.IDEAL_WEIGHT_LOW}}</span></li>
-        <li ><span class="list-btn">ID NUMBER  : {{SportsProgramMeasurement.ID_NUMBER}}</span></li>
-        <li ><span class="list-btn">ILK TARIH  : {{SportsProgramMeasurement.ILK_TARIH}}</span></li>
-        <li ><span class="list-btn">IMPEDANCE LEFT ARM  : {{SportsProgramMeasurement.IMPEDANCE_LEFT_ARM}}</span></li>
-        <li ><span class="list-btn">IMPEDANCE LEFT LEG  : {{SportsProgramMeasurement.IMPEDANCE_LEFT_LEG}}</span></li>
-        <li ><span class="list-btn">IMPEDANCE RIGHT ARM  : {{SportsProgramMeasurement.IMPEDANCE_RIGHT_ARM}}</span></li>
-        <li ><span class="list-btn">IMPEDANCE RIGHT LEG  : {{SportsProgramMeasurement.IMPEDANCE_RIGHT_LEG}}</span></li>
-        <li ><span class="list-btn">IMPEDANCE WHOLE BODY  : {{SportsProgramMeasurement.IMPEDANCE_WHOLE_BODY}}</span></li>
-        <li ><span class="list-btn">ISLEM SAATI  : {{SportsProgramMeasurement.ISLEM_SAATI}}</span></li>
-        <li ><span class="list-btn">ISLEM TARIHI  : {{SportsProgramMeasurement.ISLEM_TARIHI}}</span></li>
-        <li ><span class="list-btn">LEFT ARM1  : {{SportsProgramMeasurement.LEFT_ARM1}}</span></li>
-        <li ><span class="list-btn">LEFT ARM2  : {{SportsProgramMeasurement.LEFT_ARM2}}</span></li>
-        <li ><span class="list-btn">LEFT ARM3  : {{SportsProgramMeasurement.LEFT_ARM3}}</span></li>
-        <li ><span class="list-btn">LEFT ARM AVG  : {{SportsProgramMeasurement.LEFT_ARM_AVG}}</span></li>
-        <li ><span class="list-btn">LEFT ARM FAT MASS  : {{SportsProgramMeasurement.LEFT_ARM_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">LEFT ARM FAT PERCENT  : {{SportsProgramMeasurement.LEFT_ARM_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">LEFT ARM FAT PERCENT SCORE  : {{SportsProgramMeasurement.LEFT_ARM_FAT_PERCENT_SCORE}}</span></li>
-        <li ><span class="list-btn">LEFT ARM FFM  : {{SportsProgramMeasurement.LEFT_ARM_FFM}}</span></li>
-        <li ><span class="list-btn">LEFT ARM MUSCLE MASS  : {{SportsProgramMeasurement.LEFT_ARM_MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">LEFT ARM MUSCLE MASS SCORE  : {{SportsProgramMeasurement.LEFT_ARM_MUSCLE_MASS_SCORE}}</span></li>
-        <li ><span class="list-btn">LEFT ARM R 250KHZ JL  : {{SportsProgramMeasurement.LEFT_ARM_R_250KHZ_JL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM R 500KHZ LL  : {{SportsProgramMeasurement.LEFT_ARM_R_500KHZ_LL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM R 50KHZ RL  : {{SportsProgramMeasurement.LEFT_ARM_R_50KHZ_RL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM R 5KHZ GL  : {{SportsProgramMeasurement.LEFT_ARM_R_5KHZ_GL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM X 250KHZ KL  : {{SportsProgramMeasurement.LEFT_ARM_X_250KHZ_KL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM X 500KHZ WL  : {{SportsProgramMeasurement.LEFT_ARM_X_500KHZ_WL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM X 50KHZ XL  : {{SportsProgramMeasurement.LEFT_ARM_X_50KHZ_XL}}</span></li>
-        <li ><span class="list-btn">LEFT ARM X 5KHZ HL  : {{SportsProgramMeasurement.LEFT_ARM_X_5KHZ_HL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG FAT MASS  : {{SportsProgramMeasurement.LEFT_LEG_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">LEFT LEG FAT PERCENT  : {{SportsProgramMeasurement.LEFT_LEG_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">LEFT LEG FAT PERCENT SCORE  : {{SportsProgramMeasurement.LEFT_LEG_FAT_PERCENT_SCORE}}</span></li>
-        <li ><span class="list-btn">LEFT LEG FFM  : {{SportsProgramMeasurement.LEFT_LEG_FFM}}</span></li>
-        <li ><span class="list-btn">LEFT LEG MUSCLE MASS  : {{SportsProgramMeasurement.LEFT_LEG_MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">LEFT LEG MUSCLE MASS SCORE  : {{SportsProgramMeasurement.LEFT_LEG_MUSCLE_MASS_SCORE}}</span></li>
-        <li ><span class="list-btn">LEFT LEG R 250KHZ JL  : {{SportsProgramMeasurement.LEFT_LEG_R_250KHZ_JL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG R 500KHZ LL  : {{SportsProgramMeasurement.LEFT_LEG_R_500KHZ_LL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG R 5KHZ GL  : {{SportsProgramMeasurement.LEFT_LEG_R_5KHZ_GL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG R 5OKHZ RL  : {{SportsProgramMeasurement.LEFT_LEG_R_5OKHZ_RL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG X 250KHZ KL  : {{SportsProgramMeasurement.LEFT_LEG_X_250KHZ_KL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG X 50KHZ XL  : {{SportsProgramMeasurement.LEFT_LEG_X_50KHZ_XL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG X 5KHZ HL  : {{SportsProgramMeasurement.LEFT_LEG_X_5KHZ_HL}}</span></li>
-        <li ><span class="list-btn">LEFT LEG X 5KHZ QL  : {{SportsProgramMeasurement.LEFT_LEG_X_5KHZ_QL}}</span></li>
-        <li ><span class="list-btn">LEG AROUND  : {{SportsProgramMeasurement.LEG_AROUND}}</span></li>
-        <li ><span class="list-btn">LL LA R 250KHZ JH  : {{SportsProgramMeasurement.LL_LA_R_250KHZ_JH}}</span></li>
-        <li ><span class="list-btn">LL LA R 500KHZ LH  : {{SportsProgramMeasurement.LL_LA_R_500KHZ_LH}}</span></li>
-        <li ><span class="list-btn">LL LA R 50KHZ RH  : {{SportsProgramMeasurement.LL_LA_R_50KHZ_RH}}</span></li>
-        <li ><span class="list-btn">LL LA R 5KHZ GH  : {{SportsProgramMeasurement.LL_LA_R_5KHZ_GH}}</span></li>
-        <li ><span class="list-btn">LL LA X 250KHZ KH  : {{SportsProgramMeasurement.LL_LA_X_250KHZ_KH}}</span></li>
-        <li ><span class="list-btn">LL LA X 50KHZ XH  : {{SportsProgramMeasurement.LL_LA_X_50KHZ_XH}}</span></li>
-        <li ><span class="list-btn">LL LA X 5KHZ HH  : {{SportsProgramMeasurement.LL_LA_X_5KHZ_HH}}</span></li>
-        <li ><span class="list-btn">LL LA Z 500KHZ QH  : {{SportsProgramMeasurement.LL_LA_Z_500KHZ_QH}}</span></li>
-        <li ><span class="list-btn">MEASUREMENT STATUS  : {{SportsProgramMeasurement.MEASUREMENT_STATUS}}</span></li>
-        <li ><span class="list-btn">METABOLIC AGE  : {{SportsProgramMeasurement.METABOLIC_AGE}}</span></li>
-        <li ><span class="list-btn">MINERAL QUANTITY  : {{SportsProgramMeasurement.MINERAL_QUANTITY}}</span></li>
-        <li ><span class="list-btn">MODEL  : {{SportsProgramMeasurement.MODEL}}</span></li>
-        <li ><span class="list-btn">MODEL NUMBER  : {{SportsProgramMeasurement.MODEL_NUMBER}}</span></li>
-        <li ><span class="list-btn">MUSCLE MASS  : {{SportsProgramMeasurement.MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">MUSCLE SCORE  : {{SportsProgramMeasurement.MUSCLE_SCORE}}</span></li>
-        <li ><span class="list-btn">OLCU ACIKLAMA  : {{SportsProgramMeasurement.OLCU_ACIKLAMA}}</span></li>
-        <li ><span class="list-btn">OLCU BASEN  : {{SportsProgramMeasurement.OLCU_BASEN}}</span></li>
-        <li ><span class="list-btn">OLCU BEL  : {{SportsProgramMeasurement.OLCU_BEL}}</span></li>
-        <li ><span class="list-btn">OLCU DINLENIKNABIZ  : {{SportsProgramMeasurement.OLCU_DINLENIKNABIZ}}</span></li>
-        <li ><span class="list-btn">OLCU FAT TO GAIN  : {{SportsProgramMeasurement.OLCU_FAT_TO_GAIN}}</span></li>
-        <li ><span class="list-btn">OLCU FAT TO LOSS  : {{SportsProgramMeasurement.OLCU_FAT_TO_LOSS}}</span></li>
-        <li ><span class="list-btn">OLCU GOGUS  : {{SportsProgramMeasurement.OLCU_GOGUS}}</span></li>
-        <li ><span class="list-btn">OLCU GOGUS ALTI  : {{SportsProgramMeasurement.OLCU_GOGUS_ALTI}}</span></li>
-        <li ><span class="list-btn">OLCU KALCA  : {{SportsProgramMeasurement.OLCU_KALCA}}</span></li>
-        <li ><span class="list-btn">OLCU KARIN  : {{SportsProgramMeasurement.OLCU_KARIN}}</span></li>
-        <li ><span class="list-btn">OLCU OMUZ  : {{SportsProgramMeasurement.OLCU_OMUZ}}</span></li>
-        <li ><span class="list-btn">OLCU SAGBACAK  : {{SportsProgramMeasurement.OLCU_SAGBACAK}}</span></li>
-        <li ><span class="list-btn">OLCU SAGKOL  : {{SportsProgramMeasurement.OLCU_SAGKOL}}</span></li>
-        <li ><span class="list-btn">OLCU SAG BALDIR  : {{SportsProgramMeasurement.OLCU_SAG_BALDIR}}</span></li>
-        <li ><span class="list-btn">OLCU SOLBACAK  : {{SportsProgramMeasurement.OLCU_SOLBACAK}}</span></li>
-        <li ><span class="list-btn">OLCU SOLKOL  : {{SportsProgramMeasurement.OLCU_SOLKOL}}</span></li>
-        <li ><span class="list-btn">OLCU SOL BALDIR  : {{SportsProgramMeasurement.OLCU_SOL_BALDIR}}</span></li>
-        <li ><span class="list-btn">OLCU TANSIYON  : {{SportsProgramMeasurement.OLCU_TANSIYON}}</span></li>
-        <li ><span class="list-btn">OLCU TARGET FAT MASS  : {{SportsProgramMeasurement.OLCU_TARGET_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">OLCU TARGET WEIGHT  : {{SportsProgramMeasurement.OLCU_TARGET_WEIGHT}}</span></li>
-        <li ><span class="list-btn">PAZU AROUND  : {{SportsProgramMeasurement.PAZU_AROUND}}</span></li>
-        <li ><span class="list-btn">PHYSICAL DENSITY  : {{SportsProgramMeasurement.PHYSICAL_DENSITY}}</span></li>
-        <li ><span class="list-btn">PREDICTED FAT MASS  : {{SportsProgramMeasurement.PREDICTED_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">PREDICTED WEIGHT  : {{SportsProgramMeasurement.PREDICTED_WEIGHT}}</span></li>
-        <li ><span class="list-btn">PROTEIN QUANTITY  : {{SportsProgramMeasurement.PROTEIN_QUANTITY}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM1  : {{SportsProgramMeasurement.RIGHT_ARM1}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM2  : {{SportsProgramMeasurement.RIGHT_ARM2}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM3  : {{SportsProgramMeasurement.RIGHT_ARM3}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM AVG  : {{SportsProgramMeasurement.RIGHT_ARM_AVG}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM FAT MASS  : {{SportsProgramMeasurement.RIGHT_ARM_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM FAT PERCENT  : {{SportsProgramMeasurement.RIGHT_ARM_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM FAT PERCENT SCORE  : {{SportsProgramMeasurement.RIGHT_ARM_FAT_PERCENT_SCORE}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM FFM  : {{SportsProgramMeasurement.RIGHT_ARM_FFM}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM MUSCLE MASS  : {{SportsProgramMeasurement.RIGHT_ARM_MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM MUSCLE MASS SCORE  : {{SportsProgramMeasurement.RIGHT_ARM_MUSCLE_MASS_SCORE}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM R 250KHZ JR  : {{SportsProgramMeasurement.RIGHT_ARM_R_250KHZ_JR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM R 500KHZ LR  : {{SportsProgramMeasurement.RIGHT_ARM_R_500KHZ_LR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM R 50KHZ RR  : {{SportsProgramMeasurement.RIGHT_ARM_R_50KHZ_RR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM R 5KHZ GR  : {{SportsProgramMeasurement.RIGHT_ARM_R_5KHZ_GR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM X 250KHZ KR  : {{SportsProgramMeasurement.RIGHT_ARM_X_250KHZ_KR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM X 500KHZ QR  : {{SportsProgramMeasurement.RIGHT_ARM_X_500KHZ_QR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM X 50KHZ XR  : {{SportsProgramMeasurement.RIGHT_ARM_X_50KHZ_XR}}</span></li>
-        <li ><span class="list-btn">RIGHT ARM X 5KHZ HR  : {{SportsProgramMeasurement.RIGHT_ARM_X_5KHZ_HR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG FAT MASS  : {{SportsProgramMeasurement.RIGHT_LEG_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG FAT PERCENT  : {{SportsProgramMeasurement.RIGHT_LEG_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG FAT PERCENT SCORE  : {{SportsProgramMeasurement.RIGHT_LEG_FAT_PERCENT_SCORE}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG FFM  : {{SportsProgramMeasurement.RIGHT_LEG_FFM}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG MUSCLE MASS  : {{SportsProgramMeasurement.RIGHT_LEG_MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG MUSCLE MASS SCORE  : {{SportsProgramMeasurement.RIGHT_LEG_MUSCLE_MASS_SCORE}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG R 250KHZ JR  : {{SportsProgramMeasurement.RIGHT_LEG_R_250KHZ_JR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG R 500KHZ LR  : {{SportsProgramMeasurement.RIGHT_LEG_R_500KHZ_LR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG R 50KHZ RR  : {{SportsProgramMeasurement.RIGHT_LEG_R_50KHZ_RR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG R 5KHZ GR  : {{SportsProgramMeasurement.RIGHT_LEG_R_5KHZ_GR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG X 250KHZ KR  : {{SportsProgramMeasurement.RIGHT_LEG_X_250KHZ_KR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG X 500KHZ QR  : {{SportsProgramMeasurement.RIGHT_LEG_X_500KHZ_QR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG X 50KHZ XR  : {{SportsProgramMeasurement.RIGHT_LEG_X_50KHZ_XR}}</span></li>
-        <li ><span class="list-btn">RIGHT LEG X 5KHZ HR  : {{SportsProgramMeasurement.RIGHT_LEG_X_5KHZ_HR}}</span></li>
-        <li ><span class="list-btn">RL LL R 250KHZ JF  : {{SportsProgramMeasurement.RL_LL_R_250KHZ_JF}}</span></li>
-        <li ><span class="list-btn">RL LL R 500KHZ LF  : {{SportsProgramMeasurement.RL_LL_R_500KHZ_LF}}</span></li>
-        <li ><span class="list-btn">RL LL R 50KHZ RF  : {{SportsProgramMeasurement.RL_LL_R_50KHZ_RF}}</span></li>
-        <li ><span class="list-btn">RL LL R 5KHZ GF  : {{SportsProgramMeasurement.RL_LL_R_5KHZ_GF}}</span></li>
-        <li ><span class="list-btn">RL LL X 250KHZ KF  : {{SportsProgramMeasurement.RL_LL_X_250KHZ_KF}}</span></li>
-        <li ><span class="list-btn">RL LL X 500KHZ QF  : {{SportsProgramMeasurement.RL_LL_X_500KHZ_QF}}</span></li>
-        <li ><span class="list-btn">RL LL X 50KHZ XF  : {{SportsProgramMeasurement.RL_LL_X_50KHZ_XF}}</span></li>
-        <li ><span class="list-btn">RL LL X 5KHZ HF  : {{SportsProgramMeasurement.RL_LL_X_5KHZ_HF}}</span></li>
-        <li ><span class="list-btn">RMR RATE  : {{SportsProgramMeasurement.RMR_RATE}}</span></li>
-        <li ><span class="list-btn">ROHRER S INDEX  : {{SportsProgramMeasurement.ROHRER_S_INDEX}}</span></li>
-        <li ><span class="list-btn">SERIAL NO  : {{SportsProgramMeasurement.SERIAL_NO}}</span></li>
-        <li ><span class="list-btn">SHOULDER AROUND  : {{SportsProgramMeasurement.SHOULDER_AROUND}}</span></li>
-        <li ><span class="list-btn">SLM  : {{SportsProgramMeasurement.SLM}}</span></li>
-        <li ><span class="list-btn">SMM  : {{SportsProgramMeasurement.SMM}}</span></li>
-        <li ><span class="list-btn">SON KULLANICI  : {{SportsProgramMeasurement.SON_KULLANICI}}</span></li>
-        <li ><span class="list-btn">SON TARIH  : {{SportsProgramMeasurement.SON_TARIH}}</span></li>
-        <li ><span class="list-btn">SUBE KODU  : {{SportsProgramMeasurement.SUBE_KODU}}</span></li>
-        <li ><span class="list-btn">TARE  : {{SportsProgramMeasurement.TARE}}</span></li>
-        <li ><span class="list-btn">TARGET BODY FAT PERCENT  : {{SportsProgramMeasurement.TARGET_BODY_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">TBW  : {{SportsProgramMeasurement.TBW}}</span></li>
-        <li ><span class="list-btn">TBW PERCENT  : {{SportsProgramMeasurement.TBW_PERCENT}}</span></li>
-        <li ><span class="list-btn">TRANSFER OK  : {{SportsProgramMeasurement.TRANSFER_OK}}</span></li>
-        <li ><span class="list-btn">TRUNK FAT MASS  : {{SportsProgramMeasurement.TRUNK_FAT_MASS}}</span></li>
-        <li ><span class="list-btn">TRUNK FAT PERCENT  : {{SportsProgramMeasurement.TRUNK_FAT_PERCENT}}</span></li>
-        <li ><span class="list-btn">TRUNK FAT PERCENT SCORE  : {{SportsProgramMeasurement.TRUNK_FAT_PERCENT_SCORE}}</span></li>
-        <li ><span class="list-btn">TRUNK FFM  : {{SportsProgramMeasurement.TRUNK_FFM}}</span></li>
-        <li ><span class="list-btn">TRUNK MUSCLE MASS  : {{SportsProgramMeasurement.TRUNK_MUSCLE_MASS}}</span></li>
-        <li ><span class="list-btn">TRUNK MUSCLE MASS SCORE  : {{SportsProgramMeasurement.TRUNK_MUSCLE_MASS_SCORE}}</span></li>
-        <li ><span class="list-btn">VISCERAL FAT RATING  : {{SportsProgramMeasurement.VISCERAL_FAT_RATING}}</span></li>
-        <li ><span class="list-btn">WAIST AROUND  : {{SportsProgramMeasurement.WAIST_AROUND}}</span></li>
-        <li ><span class="list-btn">WEIGHT  : {{SportsProgramMeasurement.WEIGHT}}</span></li>
-        <li class="list-last-child"><span class="list-btn">WHR  : {{SportsProgramMeasurement.WHR}}</span></li>
+    	<li  class="list-first-child"><span class="list-btn">İşlem Tarihi  : {{SportsProgramMeasurement.ISLEM_TARIHI}}</span></li>
+       <li ><span class="list-btn">İşlem Saati  : {{SportsProgramMeasurement.ISLEM_SAATI}}</span></li>
+       <li ><span class="list-btn">Kayıt Tipi : {{SportsProgramMeasurement.OLCUM_KAYIT_TIPI}}</span></li>
+       <li ><span class="list-btn">Boy  : {{SportsProgramMeasurement.HEIGHT}}</span></li>
+       <li ><span class="list-btn">Kilo : {{SportsProgramMeasurement.WEIGHT}}</span></li>
+    	<li ><span class="list-btn">BMI  : {{SportsProgramMeasurement.BMI}}</span></li>
+        <li ><span class="list-btn">BMR (kcal)  : {{SportsProgramMeasurement.BMR_KCAL}}</span></li>
+        <li ><span class="list-btn">BMR (kj)  : {{SportsProgramMeasurement.BMR_KJ}}</span></li>
+        <li ><span class="list-btn">Yağ (%)  : {{SportsProgramMeasurement.FAT_PERCENT}}</span></li>
+        <li ><span class="list-btn">Yağ (kg)  : {{SportsProgramMeasurement.FAT_MASS}}</span></li>
+        <li ><span class="list-btn">Kas (FFM) : {{SportsProgramMeasurement.FFM}}</span></li>
+       <li ><span class="list-btn">Su  (TBW)  : {{SportsProgramMeasurement.TBW}}</span></li>
     </ul>
     <div class="clearfix"></div>
     <div class="scrolltop radius20">
@@ -651,8 +470,27 @@
           <div class="pages_container">
           	   <div class="swiper-container swiper-nested4 vertical-container">
                <div class="swiper-wrapper">
-               <div class="swiper-slide">  
-                <div class="gallery-wrapper">
+               <div class="swipe-slide">
+               		<div class="toogle_wrap_activity  radius8">
+                                <div class="trigger_activity"><a href="#">Gelecek Etkinlikler</a></div>
+                                    <div class="toggle_container_activity">
+                                        <ul class="listing_detailed">
+                                            <li class="toggle-activity-content-1 radius4"><span class="tag">Gelecek Etkinlikler</span></li>
+                                            <li class="toggle-activity-content-2 radius4"><span class="tag">Geçmiş Etkinlikler</span></li>
+                                        </ul>
+                                    </div>
+                            </div>
+               </div>
+               <div class="swiper-slide"> 
+               		<div class="activity-content-1">
+                    		<div class="portfolio_item radius8" style="width:auto !important;">
+                                 <div class="portfolio_image" style="width:auto !important;"><a title="Aktivite Preview" class="swipebox" href="images/apple-touch-icon.png" rel="gallery-1">
+                                 <img border="0" title="" alt="" src="images/apple-touch-icon.png" style="width:auto !important;"></a></div>
+                            </div>
+                            
+                    </div>
+               		<div class="activity-content-2">
+               			 <div class="gallery-wrapper">
                 
 					<!-- <div class="topbar-wrapper">
 					    <div class="wrap-title">
@@ -717,6 +555,7 @@
                         </li>
 					</ul>
 				</div>
+                	</div>
                 </div>
                 </div>
               </div>
@@ -728,6 +567,22 @@
       <div class="pages_container">
             <div class="swiper-container swiper-nested5 vertical-container">
                 <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                        	<div class="image_single radius4"><img src="images/winner-card.png" alt="" title="" border="0"></div>
+                            <h3>POWERFULL ATHLETIC CLUB ÜYELERİ HER ZAMAN KAZANIYOR..!</h3>
+                            <p>Powerfull Athletic Club'ta; "Sağlıklı Yaşam"a dair yapacağınız harcamalarda puanlar kazanacak, biriktirdiğiniz puanları Powerfull Athletic Club'lar da harcayacaksınız…</p>
+                            <ul class="listing">
+                                    <li>2 Yıllık Üyelik: <font  color="#990000" ><b>₺ 100 Para Puan;</b></font></li>
+                                    <li>1 Yıllık Üyelik: <font  color="#990000" ><b>₺ 50 Para Puan;</b></font></li>
+                                    <li>6 Aylık Üyelik: <font  color="#990000" ><b> ₺ 30 Para Puan;</b></font></li>
+                                    <li>25 Seans Özel Ders Paketi: <font  color="#990000" ><b>₺ 50 Para Puan;</b></font></li>
+                                    <li>15 Seans Özel Ders Paketi: <font  color="#990000" ><b>₺ 30 Para Puan;</b></font></li>
+                                    <li>Arkadaşınızı tesisimize üye yaparak:<font  color="#990000" ><b> ₺ 25 Para Puan </b></font>Kazanabilirsiniz</li>
+                          </ul>
+                          <p>Kartınızda biriken para puanları 6 Aylık ve üzeri süreli üyeliklerimizde, 15 , 25 ve 50 Seans Özel Ders paketlerimizde kullanabilirsiniz…</p>
+                          <h5><font  color="#990000" ><b>Winner Card ile üye işyerlerimizde de kazanacaksınız..!</b></font></h5>
+                          <p>Winner Card ile üye işyerlerimizde, anında % 30'a varan indirimler sizleri bekliyor…</p>
+                        </div>
                         <div class="swiper-slide">  
                             <ul class="winner-card-wrapper" ng-controller="winnerCardController">
                                <li ng-repeat="item in data"  index="$index" ng-model="name" ng-click="toggleDetail($event,$index,item)">
@@ -770,34 +625,41 @@
         </div>
      </div>
 <!--Page 7 content-->
-      <div class="swiper-slide sliderbg" data-title="Personal Training">
+      <div class="swiper-slide sliderbg" data-title="Sizi Dinliyoruz">
       <div class="pages_container">
       <div class="swiper-container swiper-nested7 vertical-container">
                <div class="swiper-wrapper">
                     <div class="swiper-slide">
-
-                                                    <h2 class="post_title">DEMO CONTENT</h2>
-                                                    <div class="image_single radius4"><img src="images/personel-training.jpg" alt="" title="" border="0"></div>
-                                                    <div class="image_caption darkblue green_borderbottom radius4">Image title</div>
-                                                    <h3>Imagination is our power</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in tempus volutpat, posuere ullamcorper augue. Proin dignissim risus ut quam aliquam dignissim. In erat elit, bibendum vitae commodo vitae, bibendum non justo.<br><br> Nunc erat eros, cursus et commodo vitae, pulvinar ac libero. Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta.</p>
- 
-                                        <!--End of page container-->
+                    	<h2 id="Note" style="display: block;" class="success">Aşağıdaki Formu Göndererek Bize Mail Atabilirsiniz.</h2>
+                            <div class="form">
+                                     <form action="" method="post" id="CommentForm" class="cmxform" novalidate="novalidate">
+                                                    <label>İsim:</label>
+                                                    <input type="text" class="form_input radius4 required" value="" id="ContactName" name="ContactName">
+                                                    <label>E-posta:</label>
+                                                    <input type="text" class="form_input radius4 required email" value="" id="ContactEmail" name="ContactEmail">
+                                                    <label>Mesaj:</label>
+                                                    <textarea cols="" rows="" class="form_textarea radius4 textarea required" id="ContactComment" name="ContactComment"></textarea>
+                                                    <input type="submit" value="Gönder" id="submit" class="form_submit radius4 green green_borderbottom" name="submit">
+                                                    <input type="hidden" value="isim@domain.com" name="to" class="">
+                                                    <input type="hidden" value="İletişim mesajınız." name="subject" class="">
+                                                    <label style="display:none;" id="loader"><img id="LoadingGraphic" alt="Loading..." src="images/loader.gif"></label>
+                                       </form>
+                                  </div>
                               </div>
                     </div>
               </div>
      </div>
      </div>
 <!--Page 8 content-->
-      <div class="swiper-slide sliderbg" data-title="Wellness">
+      <div class="swiper-slide sliderbg" data-title="Medical Fitness">
       <div class="pages_container">
       <div class="swiper-container swiper-nested8 vertical-container">
                <div class="swiper-wrapper">
                     <div class="swiper-slide">
 
-                                                    <h2 class="post_title">WELLNESS CONTENT</h2>
-                                                    <div class="image_single radius4"><img src="images/wellness.jpg" alt="" title="" border="0"></div>
-                                                    <h3>Wellnessin Faydaları</h3>
+                                                    <h2 class="post_title">MEDICAL FITNESS</h2>
+                                                    <div class="image_single radius4"><img src="images/medical.jpg" alt="" title="" border="0"></div>
+                                                    <h3>Medical Fittness'in Faydaları</h3>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam velit sapien, eleifend in tempus volutpat, posuere ullamcorper augue. Proin dignissim risus ut quam aliquam dignissim. In erat elit, bibendum vitae commodo vitae, bibendum non justo.<br><br> Nunc erat eros, cursus et commodo vitae, pulvinar ac libero. Nullam et scelerisque erat. Cras vestibulum justo eget lorem semper ac facilisis nulla porta.</p>
  
                                         <!--End of page container-->
@@ -835,7 +697,7 @@
         </div>
      </div>
 
-<!--Page 10 content-->
+<!--Page 10 content
       <div class="swiper-slide sliderbg" data-title="Twitter">
         <div class="pages_container">
             <div class="swiper-container swiper-nested10 vertical-container">
@@ -859,7 +721,7 @@
             
         </div>
      </div>
-     
+     -->
 <!--Page 11 content-->
       <!-- <div class="swiper-slide sliderbg" data-title="Facebook">
         <div class="pages_container">
@@ -882,7 +744,7 @@
                    <div class="swiper-slide" ng-controller="contactController">
                    	  <div class="contact-group">
                       	<form name="contact-search-form" ng-show="viewSearchField">
-                   	    <div class="input-wrapper input-search shadow-inset input-has-clear radius8"><input id="contact-search" placeholder="Arama Yap..." ng-model="query" ng-change="onSearch()"><a class="input-clear ui-btn icon-delete btn-icon-notext icon-delete radius-5" aria-hidden="true" tabindex="-1" href="#" title="içeriği temizle">temizle</a></div>
+                        	<input id="contact-search" class="clearable form_input radius4" type="text" name="" value="" placeholder="Arama Yap" ng-model="query" ng-change="onSearch()"/>
                         </form>
                         
 						<ul class="listview  radius8 shadow" ng-show="viewSearchList">
@@ -935,12 +797,12 @@
  	<div id="footer-menu">
         <div class="btn-call-phone">
             <div class="btn-footer">
-            	<img src="images/footer_icons/phone.png"><div class="clearfix"></div><div>Arama Yap</div>
+            	<a href="tel:+90216567171" style="color:#fff !important;"><img src="images/footer_icons/phone.png"><div class="clearfix"></div><div>Arama Yap</div></a>
             </div>
         </div>
         <div class="btn-twitter">
             <div class="btn-footer">
-            	<img src="images/footer_icons/twitter.png"><div class="clearfix"></div><div>Twitter</div>
+                <img src="images/footer_icons/twitter.png"><div class="clearfix"></div><div>Twitter</div>
             </div>
         </div>
         <div class="btn-facebook">
@@ -950,7 +812,7 @@
         </div>
         <div class="btn-contact">
             <div class="btn-footer">
-            	<img src="images/footer_icons/contact.png"><div class="clearfix"></div><div>İletişim</div>
+            	<img src="images/footer_icons/instagram.png"><div class="clearfix"></div><div>Instagram</div>
             </div>
         </div> 
     </div>
@@ -958,36 +820,49 @@
 
 	<script src="js/app.js"></script>
 	<script src="js/data.js" charset="UTF-8"></script>
-	<script language="javascript">
-		var $grid = $( '#tp-grid' ),
-					$name = $( '#name' ),
-					$close = $( '#close' ),
-					$loader = $( '<div class="loader"><span>yükleniyor...</span></div>' ).insertBefore( $grid ),
-					stapel = $grid.stapel({
-						delay : 50,
-						gutter : 6,
-						onLoad : function() {
-							$loader.remove();
-							$close.hide();
-							$(".swipebox").swipebox();
-						},
-						onBeforeOpen : function( pileName ) {
-							$name.html( pileName );
-							$close.show();
-						},
-						onAfterOpen : function( pileName ) {
-							swipernested4.reInit();
-						},
-						onAfterClose: function(pileName) {
-							swipernested4.reInit();
-						}
-					} );
-					
-					$close.on( 'click', function() {
-						$close.hide();
-						$name.empty();
-						stapel.closePile();
-					} );
-	</script>
+	<script type="text/javascript">  
+		function ajaxContact(theForm) {
+			var $ = jQuery;
+			$('#loader').fadeIn();
+			var formData = $(theForm).serialize(),
+			note = $('#Note');
+			$.ajax({
+				type: "POST",
+				url: "contact-send.php",
+				data: formData,
+				success: function(response) {
+					if ( note.height() ) {			
+						note.fadeIn('fast', function() { $(this).hide(); });
+					} else {
+						note.hide();
+					}
+					$('#LoadingGraphic').fadeOut('fast', function() {
+					//$(this).remove();
+					if (response === 'success') {
+						$('#formtitle').hide();
+					}
+					// Message Sent? Show the 'Thank You' message and hide the form
+					result = '';
+					c = '';
+					if (response === 'success') { 
+						result = 'Mesajınız başarı ile gönderilmiştir.!';
+						c = 'success';
+					} else {
+						result = response;
+						c = 'error';
+					}
+				note.removeClass('success').removeClass('error').text('');
+				var i = setInterval(function() {
+					if ( !note.is(':visible') ) {
+						note.html(result).addClass(c).slideDown('fast');
+						clearInterval(i);
+					}
+				}, 40);    
+		}); // end loading image fadeOut
+		}
+		});
+		return false;
+		}
+</script>  
 </body>
 </html>
